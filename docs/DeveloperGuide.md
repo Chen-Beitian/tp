@@ -542,7 +542,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to view the help page
+1. User requests to list customers
 2. ServeMate shows a list of customers
 3. User requests to tag a customer in the list with a delivery note
 4. ServeMate tags the customer in the customer record with the delivery note
