@@ -27,9 +27,9 @@ public class JsonAdaptedDelivery {
 
     private final String startDate;
     private final String endDate;
-    private final List<JsonAdaptedDeliveryDay> deliveryDays;
+    private final List<JsonAdaptedDeliveryDay> deliveryDays = new ArrayList<>();
     private final String deliveryTime;
-    private final List<JsonAdaptedSkippedDate> skippedDates;
+    private final List<JsonAdaptedSkippedDate> skippedDates = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedDelivery} with the given delivery details.
@@ -41,9 +41,13 @@ public class JsonAdaptedDelivery {
                                @JsonProperty("skippedDates") List<JsonAdaptedSkippedDate> skippedDates) {
         this.startDate = startDate;
         this.endDate = endDate;
-        this.deliveryDays = deliveryDays;
+        if (deliveryDays != null) {
+            this.deliveryDays.addAll(deliveryDays);
+        }
         this.deliveryTime = deliveryTime;
-        this.skippedDates = skippedDates;
+        if (skippedDates != null) {
+            this.skippedDates.addAll(skippedDates);
+        }
     }
 
     /**
@@ -52,13 +56,13 @@ public class JsonAdaptedDelivery {
     public JsonAdaptedDelivery(Delivery source) {
         startDate = source.getStartDate().toString();
         endDate = source.getEndDate().toString();
-        deliveryDays = source.getDeliveryDays().stream()
+        deliveryDays.addAll(source.getDeliveryDays().stream()
                 .map(JsonAdaptedDeliveryDay::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
         deliveryTime = source.getDeliveryTime().toString();
-        skippedDates = source.getSkippedDates().stream()
+        skippedDates.addAll(source.getSkippedDates().stream()
                 .map(JsonAdaptedSkippedDate::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -97,6 +101,11 @@ public class JsonAdaptedDelivery {
         }
 
         final EndDate modelEndDate = new EndDate(endDate);
+
+        if (deliveryDays.isEmpty()) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    DeliveryDay.class.getSimpleName()));
+        }
 
         final Set<DeliveryDay> modelDeliveryDays = new HashSet<>(deliveryDays);
 

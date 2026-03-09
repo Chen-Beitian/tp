@@ -87,6 +87,14 @@ public class JsonAdaptedDeliveryTest {
     }
 
     @Test
+    public void toModelType_nullDeliveryDays_throwsIllegalValueException() {
+        JsonAdaptedDelivery delivery = new JsonAdaptedDelivery(VALID_START_DATE, VALID_END_DATE, null,
+                VALID_DELIVERY_TIME, VALID_SKIPPED_DATES);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, DeliveryDay.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, delivery::toModelType);
+    }
+
+    @Test
     public void toModelType_invalidDeliveryTime_throwsIllegalValueException() {
         JsonAdaptedDelivery delivery =
                 new JsonAdaptedDelivery(VALID_START_DATE, VALID_END_DATE, VALID_DELIVERY_DAYS,
