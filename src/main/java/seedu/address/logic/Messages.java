@@ -36,8 +36,6 @@ public class Messages {
      * Formats the {@code person} for display to the user.
      */
     public static String formatPerson(Person person) {
-        assert person != null;
-
         final StringBuilder builder = new StringBuilder();
         builder.append(person.getName())
                 .append("; Phone: ")
@@ -55,9 +53,6 @@ public class Messages {
      * Formats the {@code person}'s delivery for display to the user.
      */
     public static String formatDelivery(Person person) {
-        assert person != null;
-        assert person.hasDelivery();
-
         final StringBuilder builder = new StringBuilder();
         final Delivery delivery = person.getDelivery();
         builder.append(person.getName())

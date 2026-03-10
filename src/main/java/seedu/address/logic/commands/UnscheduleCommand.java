@@ -90,8 +90,8 @@ public class UnscheduleCommand extends Command {
             return false;
         }
 
-        UnscheduleCommand otherDeleteCommand = (UnscheduleCommand) other;
-        return targetIndex.equals(otherDeleteCommand.targetIndex);
+        UnscheduleCommand otherUnscheduleCommand = (UnscheduleCommand) other;
+        return targetIndex.equals(otherUnscheduleCommand.targetIndex);
     }
 
     @Override
