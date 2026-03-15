@@ -15,7 +15,7 @@ Given below are my contributions to the project.
     * Highlights: This was the first command implemented that explicitly interacts with a customer's delivery. As such, I had to ensure that future commands interact correctly with the `Delivery` and `Person` classes.
 
 * **Enhancements to Existing Features**:
-  * Erase all traces of AB3 and replace them with ServeMate ([\#13](https://github.com/AY2526S2-CS2103T-W14-2/tp/pull/13), [\#69](https://github.com/AY2526S2-CS2103T-W14-2/tp/pull/69), [\#94](https://github.com/AY2526S2-CS2103T-W14-2/tp/pull/94)). 
+  * Erase all traces of AB3 and replace them with ServeMate ([\#13](https://github.com/AY2526S2-CS2103T-W14-2/tp/pull/13), [\#69](https://github.com/AY2526S2-CS2103T-W14-2/tp/pull/69), [\#94](https://github.com/AY2526S2-CS2103T-W14-2/tp/pull/94)).
   * Write additional tests for existing and new features to increase test coverage from 78% to 80% ([\#80](https://github.com/AY2526S2-CS2103T-W14-2/tp/pull/80)).
 
 * **Contributions to Project Workflow**:
@@ -31,7 +31,6 @@ Given below are my contributions to the project.
   * User Guide:
     * Add documentation for `unschedule` command.
   * Developer Guide:
-    * 
 
 * **Administrative Work**:
   * Set up and maintain project's Google Drive and its documents.
