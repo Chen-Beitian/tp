@@ -29,6 +29,9 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ## **Design**
 
+> **Note:** <br>
+> All references of a person in this design section represent a customer.
+
 ### Architecture
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
