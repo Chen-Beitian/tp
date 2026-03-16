@@ -6,6 +6,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.time.DayOfWeek;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.TextStyle;
 import java.util.Locale;
 
 /**
@@ -17,6 +18,13 @@ public class DeliveryDay {
             "day should be of the valid delivery day format";
 
     /**
+     * Message to be shown for invalid day number format.
+     * TODO: Remove or move after refactoring DeliveryDay class.
+     */
+    public static final String NUMBER_MESSAGE_CONSTRAINTS =
+            "day number should be within the range 1-7";
+
+    /**
      * The day must follow the format of
      * having the complete day of the week word.
      *
@@ -26,6 +34,17 @@ public class DeliveryDay {
      * (after capitalization and lowercasing of some letters): monday, TUESDAY, WEDnesDay.
      */
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("EEEE", Locale.ENGLISH);
+
+    /**
+     * The day input that uses this formatter must follow the format of
+     * having the number representing the day of the week.
+     *
+     * Examples of day number inputs accepted by the formatter: 1, 2.
+     * The formatter will only successfully parse numbers in the range 1-7.
+     *
+     * TODO: Move the usage of this formatter.
+     */
+    private static final DateTimeFormatter NUMBER_FORMATTER = DateTimeFormatter.ofPattern("e");
 
     public final DayOfWeek day;
 
@@ -60,6 +79,45 @@ public class DeliveryDay {
         } catch (DateTimeParseException e) {
             return false;
         }
+    }
+
+    /**
+     * Returns true if a given string is a valid
+     * number representing the day of the week.
+     * It should only accept numbers 1-7.
+     *
+     * TODO: Refactor or remove this method as part of refactoring DeliveryDay class.
+     */
+    public static boolean isValidDeliveryDayNumber(String test) {
+        try {
+            // To prevent out of bounds access.
+            if (test.isEmpty()) {
+                return false;
+            }
+
+            DayOfWeek.from(NUMBER_FORMATTER.parse(test));
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns the word that represents
+     * the day of week obtained from the day number.
+     *
+     * @param number The number representing the day of the week as a string.
+     * @return The full word that represents the day of the week.
+     *
+     * Output examples: Monday, Tuesday, Thursday.
+     *
+     * TODO: Refactor or remove this method as part of refactoring DeliveryDay class.
+     */
+    public static String convertDayNumberToDayWord(String number) {
+        requireNonNull(number);
+        checkArgument(isValidDeliveryDayNumber(number), NUMBER_MESSAGE_CONSTRAINTS);
+        DayOfWeek day = DayOfWeek.from(NUMBER_FORMATTER.parse(number));
+        return day.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
     }
 
     @Override
