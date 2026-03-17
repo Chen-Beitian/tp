@@ -43,7 +43,7 @@ public class Person {
         this(name, phone, email, address, tags, null);
     }
 
-    //@author BenedTj
+    //@@author BenedTj
     /**
      * Every field must be present and not null.
      */
