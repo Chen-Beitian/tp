@@ -168,7 +168,7 @@ public class ScheduleCommandTest {
         assertFalse(firstDelivery.equals(secondDelivery));
 
         ScheduleCommand scheduleFirstCommand = new ScheduleCommand(INDEX_FIRST_PERSON, firstDelivery);
-        ScheduleCommand scheduleSecondCommand = new ScheduleCommand(INDEX_SECOND_PERSON,secondDelivery);
+        ScheduleCommand scheduleSecondCommand = new ScheduleCommand(INDEX_SECOND_PERSON, secondDelivery);
         ScheduleCommand scheduleThirdCommand = new ScheduleCommand(INDEX_SECOND_PERSON, firstDelivery);
         ScheduleCommand scheduleFourthCommand = new ScheduleCommand(INDEX_FIRST_PERSON, secondDelivery);
 

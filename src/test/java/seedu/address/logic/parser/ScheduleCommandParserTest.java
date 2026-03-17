@@ -1,17 +1,5 @@
 package seedu.address.logic.parser;
 
-import org.junit.jupiter.api.Test;
-
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.Messages;
-import seedu.address.logic.commands.ScheduleCommand;
-import seedu.address.model.delivery.Delivery;
-import seedu.address.model.delivery.DeliveryDay;
-import seedu.address.model.delivery.DeliveryTime;
-import seedu.address.model.delivery.StartDate;
-import seedu.address.model.delivery.fields.NumberOfDays;
-import seedu.address.testutil.DeliveryBuilder;
-
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.DAYS_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DAYS_DESC;
@@ -34,6 +22,18 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.ScheduleCommand;
+import seedu.address.model.delivery.Delivery;
+import seedu.address.model.delivery.DeliveryDay;
+import seedu.address.model.delivery.DeliveryTime;
+import seedu.address.model.delivery.StartDate;
+import seedu.address.model.delivery.fields.NumberOfDays;
+import seedu.address.testutil.DeliveryBuilder;
 
 public class ScheduleCommandParserTest {
     private ScheduleCommandParser parser = new ScheduleCommandParser();

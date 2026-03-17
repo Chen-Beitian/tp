@@ -1,19 +1,22 @@
 package seedu.address.testutil;
 
-import seedu.address.model.delivery.Delivery;
-import seedu.address.model.delivery.DeliveryDay;
-
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAYS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NUMBER_OF_DAYS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.address.model.delivery.DeliveryDay.NUMBER_FORMATTER;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import seedu.address.model.delivery.Delivery;
+import seedu.address.model.delivery.DeliveryDay;
+
+/**
+ * A utility class for Delivery.
+ */
 public class DeliveryUtil {
     /**
      * Returns the part of command string for the given {@code delivery}'s details.
@@ -31,6 +34,13 @@ public class DeliveryUtil {
         return sb.toString();
     }
 
+    /**
+     * Returns the command argument found after /days
+     * given a certain set of DeliveryDay {@code deliveryDaysSet}.
+     *
+     * @param deliveryDaysSet The set of DeliveryDay.
+     * @return The argument that can be put after /days in commands.
+     */
     private static String getDeliveryDaysArgument(Set<DeliveryDay> deliveryDaysSet) {
         return deliveryDaysSet.stream()
                 .map(deliveryDay -> NUMBER_FORMATTER.format(deliveryDay.day))
