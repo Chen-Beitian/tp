@@ -206,12 +206,11 @@ public class ParserUtil {
      */
     public static DeliveryDay parseDeliveryDayNumber(String deliveryDayNumber) throws ParseException {
         requireNonNull(deliveryDayNumber);
-        String trimmedDeliveryDayNumber = deliveryDayNumber.trim();
-        if (!DeliveryDay.isValidDeliveryDayNumber(trimmedDeliveryDayNumber)) {
+        if (!DeliveryDay.isValidDeliveryDayNumber(deliveryDayNumber)) {
             throw new ParseException(DeliveryDay.MESSAGE_CONSTRAINTS);
         }
         // TODO: Refactor after the refactoring of the DeliveryDay.
-        String deliveryDayWord = DeliveryDay.convertDayNumberToDayWord(trimmedDeliveryDayNumber);
+        String deliveryDayWord = DeliveryDay.convertDayNumberToDayWord(deliveryDayNumber);
         return new DeliveryDay(deliveryDayWord);
     }
 
