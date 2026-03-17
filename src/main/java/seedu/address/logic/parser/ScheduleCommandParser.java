@@ -10,7 +10,6 @@ import static seedu.address.logic.parser.ParserUtil.arePrefixesPresent;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ScheduleCommand;
