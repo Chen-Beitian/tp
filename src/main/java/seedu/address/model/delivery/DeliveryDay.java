@@ -25,17 +25,6 @@ public class DeliveryDay {
             "day number should be within the range 1-7";
 
     /**
-     * The day must follow the format of
-     * having the complete day of the week word.
-     *
-     * Examples of day inputs accepted by the formatter: Monday, Tuesday.
-     *
-     * Examples of valid input from the user
-     * (after capitalization and lowercasing of some letters): monday, TUESDAY, WEDnesDay.
-     */
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("EEEE", Locale.ENGLISH);
-
-    /**
      * The day input that uses this formatter must follow the format of
      * having the number representing the day of the week.
      *
@@ -45,6 +34,17 @@ public class DeliveryDay {
      * TODO: Move the usage of this formatter.
      */
     public static final DateTimeFormatter NUMBER_FORMATTER = DateTimeFormatter.ofPattern("e", Locale.UK);
+
+    /**
+     * The day must follow the format of
+     * having the complete day of the week word.
+     *
+     * Examples of day inputs accepted by the formatter: Monday, Tuesday.
+     *
+     * Examples of valid input from the user
+     * (after capitalization and lowercasing of some letters): monday, TUESDAY, WEDnesDay.
+     */
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("EEEE", Locale.ENGLISH);
 
     public final DayOfWeek day;
 
@@ -105,15 +105,13 @@ public class DeliveryDay {
     /**
      * Returns the word that represents
      * the day of week obtained from the day number.
+     * Output examples: Monday, Tuesday, Thursday.
      *
      * @param number The number representing the day of the week as a string.
      * @return The full word that represents the day of the week.
-     *
-     * Output examples: Monday, Tuesday, Thursday.
-     *
-     * TODO: Refactor or remove this method as part of refactoring DeliveryDay class.
      */
     public static String convertDayNumberToDayWord(String number) {
+        // TODO: Refactor or remove this method as part of refactoring DeliveryDay class.
         requireNonNull(number);
         checkArgument(isValidDeliveryDayNumber(number), NUMBER_MESSAGE_CONSTRAINTS);
         DayOfWeek day = DayOfWeek.from(NUMBER_FORMATTER.parse(number));
