@@ -14,8 +14,13 @@ import static seedu.address.testutil.TypicalDeliveries.DELIVERY_CARL;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
+import java.util.Collections;
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.delivery.Delivery;
+import seedu.address.testutil.DeliveryBuilder;
 import seedu.address.testutil.PersonBuilder;
 
 public class PersonTest {
@@ -56,6 +61,49 @@ public class PersonTest {
         String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
         editedBob = new PersonBuilder(BOB).withName(nameWithTrailingSpaces).build();
         assertFalse(BOB.isSamePerson(editedBob));
+    }
+
+    @Test
+    public void getFormattedDeliverySchedule_personWithDelivery_returnsDeliverySchedule() {
+        Delivery delivery = new DeliveryBuilder()
+                .withStartDate("2026-02-10")
+                .withEndDate("2026-03-12")
+                .withDeliveryTime("16:00")
+                .build();
+        Person person = new PersonBuilder()
+                .withDelivery(delivery)
+                .build();
+        assertEquals("2026-02-10 to 2026-03-12  |  16:00", person.getFormattedDeliverySchedule());
+    }
+
+    @Test
+    public void getFormattedDeliverySchedule_personWithoutDelivery_returnsEmptyString() {
+        assertEquals("", BOB.getFormattedDeliverySchedule());
+    }
+
+    @Test
+    public void getDeliveryDayNames_personWithDelivery_returnsDeliveryDayNames() {
+        Delivery delivery = new DeliveryBuilder()
+                .withDeliveryDays("Tuesday", "Friday")
+                .build();
+        Person person = new PersonBuilder()
+                .withDelivery(delivery)
+                .build();
+        assertEquals(Set.of("TUESDAY", "FRIDAY"), person.getDeliveryDayNames());
+
+        // no delivery days -> return empty set
+        delivery = new DeliveryBuilder()
+                .withDeliveryDays()
+                .build();
+        person = new PersonBuilder()
+                .withDelivery(delivery)
+                .build();
+        assertEquals(Collections.emptySet(), person.getDeliveryDayNames());
+    }
+
+    @Test
+    public void getDeliveryDayNames_personWithoutDelivery_returnsEmptySet() {
+        assertEquals(Collections.emptySet(), BOB.getDeliveryDayNames());
     }
 
     @Test
