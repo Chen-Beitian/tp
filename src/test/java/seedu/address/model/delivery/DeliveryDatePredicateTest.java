@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.person.AddressContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.DeliveryBuilder;
 import seedu.address.testutil.PersonBuilder;
