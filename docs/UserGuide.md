@@ -127,7 +127,7 @@ Examples:
 
 ### Locating customers by attributes: `find`
 
-Finds customers whose attributes (name, address, tag) match all the filters (`n/`, `a/`, `t/`) specified.
+Find customers whose attributes (name, address, tag) match at least 1 of the keywords given in each filter (`n/`, `a/`, `t/`) specified.
 
 Format: `find [n/NAME_KEYWORDS...] [a/ADDRESS_KEYWORDS...] [t/TAG_KEYWORDS...]`
 
@@ -138,7 +138,7 @@ Format: `find [n/NAME_KEYWORDS...] [a/ADDRESS_KEYWORDS...] [t/TAG_KEYWORDS...]`
 * At least 1 filter with a keyword must be specified.
 * If a filter is not specified or there are no keywords, the filter is *not applied*.
 * Only customers matching *all* filters specified will be displayed.
-* For each filter, multiple keywords can be specified. A customer matches the filter if *at least one* keyword matches (i.e. `OR` search).
+* For each filter, multiple keywords (each separated by a space) can be specified. A customer matches the filter if *at least one* keyword matches (i.e. `OR` search).
   e.g. `n/John Lily t/Vegetarian` will return all your customers whose name is `John` or `Lily`, and tagged with dietary restriction `Vegetarian`.
 
 Examples:
