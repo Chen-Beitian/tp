@@ -2,13 +2,21 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.delivery.DeliveryDay;
+import seedu.address.model.delivery.DeliveryTime;
+import seedu.address.model.delivery.EndDate;
+import seedu.address.model.delivery.StartDate;
+import seedu.address.model.delivery.fields.NumberOfDays;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -21,6 +29,15 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_DATE = "Date is not valid. It should be in the format yyyy-MM-dd.";
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    public static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    }
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -111,6 +128,22 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String date} into a {@code LocalDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is not in yyyy-MM-dd format.
+     */
+    public static LocalDate parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        try {
+            return LocalDate.parse(trimmedDate);
+        } catch (DateTimeParseException e) {
+            throw new ParseException(MESSAGE_INVALID_DATE);
+        }
+    }
+
+    /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
      */
     public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
@@ -120,5 +153,97 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses {@code String startDate} into a {@code StartDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code startDate} is invalid.
+     */
+    public static StartDate parseStartDate(String startDate) throws ParseException {
+        requireNonNull(startDate);
+        String trimmedStartDate = startDate.trim();
+        if (!StartDate.isValidStartDate(trimmedStartDate)) {
+            throw new ParseException(StartDate.MESSAGE_CONSTRAINTS);
+        }
+        return new StartDate(trimmedStartDate);
+    }
+
+    /**
+     * Parses {@code String numberOfDays} into a {@code NumberOfDays}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code numberOfDays} is invalid.
+     */
+    public static NumberOfDays parseNumberOfDays(String numberOfDays) throws ParseException {
+        requireNonNull(numberOfDays);
+        String trimmedNumberOfDays = numberOfDays.trim();
+        if (!NumberOfDays.isValidNumberOfDays(trimmedNumberOfDays)) {
+            throw new ParseException(NumberOfDays.MESSAGE_CONSTRAINTS);
+        }
+        return new NumberOfDays(trimmedNumberOfDays);
+    }
+
+    /**
+     * Returns the {@code EndDate} object when
+     * given the {@code startDate} and {@code numberOfDays}.
+     *
+     * @param startDate The StartDate object representing the start date.
+     * @param numberOfDays The NumberOfDays object representing the number of days
+     *                     that should be added to the startDate.
+     * @return The EndDate object which represents the end date computed.
+     */
+    public static EndDate getEndDate(StartDate startDate, NumberOfDays numberOfDays) {
+        requireNonNull(startDate);
+        requireNonNull(numberOfDays);
+        LocalDate endDate = startDate.date.plusDays(numberOfDays.days - 1);
+        return new EndDate(endDate.format(EndDate.FORMATTER));
+    }
+
+    /**
+     * Returns the {@code String deliveryTime} into a {@code DeliveryTime}
+     * Leading and trailing whitespaces are trimmed.
+     *
+     * @throws ParseException if the given {@code deliveryTime} is invalid.
+     */
+    public static DeliveryTime parseDeliveryTime(String deliveryTime) throws ParseException {
+        requireNonNull(deliveryTime);
+        String trimmedDeliveryTime = deliveryTime.trim();
+        if (!DeliveryTime.isValidDeliveryTime(trimmedDeliveryTime)) {
+            throw new ParseException(DeliveryTime.MESSAGE_CONSTRAINTS);
+        }
+        return new DeliveryTime(trimmedDeliveryTime);
+    }
+
+    /**
+     * Parses a {@code String deliveryDayNumber} into a {@code DeliveryDay}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code deliveryDayNumber} is invalid.
+     */
+    public static DeliveryDay parseDeliveryDayNumber(String deliveryDayNumber) throws ParseException {
+        requireNonNull(deliveryDayNumber);
+        if (!DeliveryDay.isValidDeliveryDayNumber(deliveryDayNumber)) {
+            throw new ParseException(DeliveryDay.MESSAGE_CONSTRAINTS);
+        }
+        // TODO: Refactor after the refactoring of the DeliveryDay.
+        String deliveryDayWord = DeliveryDay.convertDayNumberToDayWord(deliveryDayNumber);
+        return new DeliveryDay(deliveryDayWord);
+    }
+
+    /**
+     * Parses {@code Collection<String> deliveryDays} into {@code Set<DeliveryDay>}.
+     */
+    public static Set<DeliveryDay> parseDeliveryDays(String deliveryDays) throws ParseException {
+        requireNonNull(deliveryDays);
+
+        String trimmedDeliveryDays = deliveryDays.trim();
+        String[] listOfDeliveryDays = trimmedDeliveryDays.split("");
+        Set<DeliveryDay> deliveryDaySet = new HashSet<>();
+        for (String deliveryDayNumber : listOfDeliveryDays) {
+            deliveryDaySet.add(parseDeliveryDayNumber(deliveryDayNumber));
+        }
+        return deliveryDaySet;
     }
 }

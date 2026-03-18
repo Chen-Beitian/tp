@@ -6,9 +6,11 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.delivery.Delivery;
+import seedu.address.model.delivery.DeliveryDay;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -28,15 +30,23 @@ public class Person {
     private final Delivery delivery;
 
     /**
-     * Constructs a {@code Person} where every field,
-     * except for deliveries, must be present and not null.
+     * Constructs a {@code Person} with the given name, phone, email, address and tags.
+     * The {@code delivery} field is initialized to {@code null}.
+     *
+     * @param name Name of the person. Must not be null.
+     * @param phone Phone number of the person. Must not be null.
+     * @param email Email of the person. Must not be null.
+     * @param address Address of the person. Must not be null.
+     * @param tags Set of tags associated with the person. Must not be null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         this(name, phone, email, address, tags, null);
     }
 
+    //@@author BenedTj
     /**
      * Every field must be present and not null.
+     * This constructor should be used when delivery is not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Delivery delivery) {
         requireAllNonNull(name, phone, email, address, tags);
@@ -46,6 +56,16 @@ public class Person {
         this.address = address;
         this.tags.addAll(tags);
         this.delivery = delivery;
+    }
+    //@@author
+
+    /**
+     * Returns a new {@code Person} without any delivery assigned.
+     *
+     * @return A copy of this person with their delivery removed.
+     */
+    public Person withoutDelivery() {
+        return new Person(name, phone, email, address, getTags());
     }
 
     public Name getName() {
@@ -65,17 +85,54 @@ public class Person {
     }
 
     /**
-     * Returns true if the person has a {@code delivery}.
+     * Checks whether the person has a {@code delivery} assigned.
+     *
+     * @return {@code true} if a delivery is assigned to this person,
+     *         {@code false} otherwise.
      */
     public boolean hasDelivery() {
         return delivery != null;
     }
 
+    //@@author BenedTj
     /**
      * Returns the Delivery object of the person, which could be null.
      */
     public Delivery getDelivery() {
         return delivery;
+    }
+    //@@author
+
+    /**
+     * Returns a formatted string of the person's delivery schedule for display, or an empty string
+     * if person does not have a delivery assigned.
+     *
+     * @return Formatted string containing the start date, end date, and time of the person's delivery.
+     */
+    public String getFormattedDeliverySchedule() {
+        if (!hasDelivery()) {
+            return "";
+        }
+        return delivery.getFormattedDeliverySchedule();
+    }
+
+    /**
+     * Returns an immutable set of delivery day names.
+     * <p>If the person does not have a delivery assigned or has a delivery with no delivery days,
+     * an empty set is returned.
+     * <p>Example of delivery day names: Monday, Tuesday ...
+     *
+     * @return A set of delivery day names if the person has a delivery assigned.
+     */
+    public Set<String> getDeliveryDayNames() {
+        if (!hasDelivery()) {
+            return Collections.emptySet();
+        }
+        return delivery
+                .getDeliveryDays()
+                .stream()
+                .map(DeliveryDay::toString)
+                .collect(Collectors.toUnmodifiableSet());
     }
 
     /**
@@ -114,6 +171,7 @@ public class Person {
             return false;
         }
 
+        //@@author BenedTj
         Person otherPerson = (Person) other;
 
         boolean isNonNullableFieldsEqual = name.equals(otherPerson.name)
@@ -127,6 +185,7 @@ public class Person {
         } else {
             return isNonNullableFieldsEqual && delivery.equals(otherPerson.delivery);
         }
+        //@@author
     }
 
     @Override

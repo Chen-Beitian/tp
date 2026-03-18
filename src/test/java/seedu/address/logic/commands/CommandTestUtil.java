@@ -3,10 +3,14 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DAYS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NUMBER_OF_DAYS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -46,6 +50,11 @@ public class CommandTestUtil {
     public static final String VALID_DELIVERY_DAY = "Monday";
     public static final String VALID_SKIPPED_DATE = "2020-02-10";
 
+    public static final String VALID_NUMBER_OF_DAYS_AMY = "61";
+    public static final String VALID_NUMBER_OF_DAYS_BOB = "14";
+    public static final String VALID_DAYS_AMY = "1";
+    public static final String VALID_DAYS_BOB = "1";
+
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
     public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;
@@ -57,11 +66,27 @@ public class CommandTestUtil {
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
+    public static final String START_DATE_DESC_AMY = " " + PREFIX_START_DATE + VALID_START_DATE_AMY;
+    public static final String START_DATE_DESC_BOB = " " + PREFIX_START_DATE + VALID_START_DATE_BOB;
+    public static final String NUMBER_OF_DAYS_DESC_AMY = " " + PREFIX_NUMBER_OF_DAYS + VALID_NUMBER_OF_DAYS_AMY;
+    public static final String NUMBER_OF_DAYS_DESC_BOB = " " + PREFIX_NUMBER_OF_DAYS + VALID_NUMBER_OF_DAYS_BOB;
+    public static final String TIME_DESC_AMY = " " + PREFIX_TIME + VALID_DELIVERY_TIME_AMY;
+    public static final String TIME_DESC_BOB = " " + PREFIX_TIME + VALID_DELIVERY_TIME_BOB;
+    public static final String DAYS_DESC_AMY = " " + PREFIX_DAYS + VALID_DAYS_AMY;
+    public static final String DAYS_DESC_BOB = " " + PREFIX_DAYS + VALID_DAYS_BOB;
+
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
+
+    public static final String INVALID_START_DATE_DESC =
+            " " + PREFIX_START_DATE + "2020*20*20"; // '*' not allowed in start dates
+    public static final String INVALID_NUMBER_OF_DAYS_DESC =
+            " " + PREFIX_NUMBER_OF_DAYS + "11&"; // '&' not allowed in number of days
+    public static final String INVALID_TIME_DESC = " " + PREFIX_TIME + "1112"; // missing ':' symbol
+    public static final String INVALID_DAYS_DESC = " " + PREFIX_DAYS; // empty string not allowed for delivery days
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

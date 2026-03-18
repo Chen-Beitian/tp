@@ -25,10 +25,14 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ScheduleCommand;
 import seedu.address.logic.commands.UnscheduleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.delivery.Delivery;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonMatchesFilterPredicate;
+import seedu.address.testutil.DeliveryBuilder;
+import seedu.address.testutil.DeliveryUtil;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
@@ -85,6 +89,14 @@ public class AddressBookParserTest {
                         + PREFIX_TAG + tagKeywords.stream().collect(Collectors.joining(" ")));
         assertEquals(new FindCommand(new PersonMatchesFilterPredicate(nameKeywords, addressKeywords, tagKeywords)),
                 command);
+    }
+
+    @Test
+    public void parseCommand_schedule() throws Exception {
+        Delivery delivery = new DeliveryBuilder().build();
+        ScheduleCommand command = (ScheduleCommand) parser.parseCommand(ScheduleCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + " " + DeliveryUtil.getDeliveryDetails(delivery));
+        assertEquals(new ScheduleCommand(INDEX_FIRST_PERSON, delivery), command);
     }
 
     @Test
