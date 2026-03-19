@@ -8,6 +8,7 @@ import static seedu.address.commons.util.DateTimeUtil.parseDeliveryDate;
 import static seedu.address.model.delivery.DeliveryDay.toDeliveryDay;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -36,6 +37,7 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_DATE = "Date is not valid. It should be in the format yyyy-MM-dd.";
     public static final String MESSAGE_INVALID_DAY_NUMBER =
             "Day number is not valid. It can only be a whole number within 1 to 7 inclusive.";
+    public static final String MESSAGE_DUPLICATE_DELIVERY_DAYS = "The delivery day should not be duplicated";
 
     /**
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
@@ -262,6 +264,12 @@ public class ParserUtil {
 
         String trimmedDeliveryDays = deliveryDays.trim();
         String[] listOfDeliveryDays = trimmedDeliveryDays.split("");
+
+        // Throw ParseException if duplicate delivery days are parsed.
+        if (Arrays.stream(listOfDeliveryDays).distinct().count() == listOfDeliveryDays.length) {
+            throw new ParseException(MESSAGE_DUPLICATE_DELIVERY_DAYS);
+        }
+
         Set<DeliveryDay> deliveryDaySet = new HashSet<>();
         for (String deliveryDayNumber : listOfDeliveryDays) {
             deliveryDaySet.add(parseDeliveryDayNumber(deliveryDayNumber));
