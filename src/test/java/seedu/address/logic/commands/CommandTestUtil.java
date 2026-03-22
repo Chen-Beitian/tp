@@ -49,6 +49,8 @@ public class CommandTestUtil {
     public static final String VALID_DELIVERY_TIME_AMY = "20:20";
     public static final String VALID_DELIVERY_TIME_BOB = "12:13";
     public static final String VALID_DELIVERY_DAY = "Monday";
+    public static final String VALID_DELIVERY_DAY_AMY = "Tuesday";
+    public static final String VALID_DELIVERY_DAY_BOB = "Wednesday";
     public static final String VALID_SKIPPED_DATE = "2020-02-10";
 
     public static final String VALID_NUMBER_OF_DAYS_AMY = "61";
@@ -109,11 +111,11 @@ public class CommandTestUtil {
         DESC_AMY_RESCHEDULE = new RescheduleDeliveryDescriptorBuilder(). withStartDate(VALID_START_DATE_AMY)
                 .withEndDate(VALID_END_DATE_AMY)
                 .withDeliveryTime(VALID_DELIVERY_TIME_AMY)
-                .withDeliveryDays(VALID_DAYS_AMY).build();
+                .withDeliveryDays(VALID_DELIVERY_DAY_AMY).build();
         DESC_BOB_RESCHEDULE = new RescheduleDeliveryDescriptorBuilder(). withStartDate(VALID_START_DATE_BOB)
                 .withEndDate(VALID_END_DATE_BOB)
                 .withDeliveryTime(VALID_DELIVERY_TIME_BOB)
-                .withDeliveryDays(VALID_DAYS_BOB).build();
+                .withDeliveryDays(VALID_DELIVERY_DAY_BOB).build();
     }
 
     /**
