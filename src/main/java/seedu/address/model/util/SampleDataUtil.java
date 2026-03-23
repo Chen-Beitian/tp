@@ -32,7 +32,7 @@ public class SampleDataUtil {
             EnumSet.range(DayOfWeek.MONDAY, DayOfWeek.FRIDAY)
                     .stream()
                     .map(Enum::name)
-                    .map(DeliveryDay::new)
+                    .map(DeliveryDay::toDeliveryDay)
                     .collect(Collectors.toSet()),
             new DeliveryTime("16:00"),
             Set.of(new SkippedDate("2026-11-20"), new SkippedDate("2026-11-19"))
@@ -43,7 +43,7 @@ public class SampleDataUtil {
                     .stream()
                     .filter(day -> !day.equals(DayOfWeek.THURSDAY)) // do not deliver on Thursdays
                     .map(Enum::name)
-                    .map(DeliveryDay::new)
+                    .map(DeliveryDay::toDeliveryDay)
                     .collect(Collectors.toSet()),
             new DeliveryTime("16:00"),
             Set.of(new SkippedDate("2026-11-20"), new SkippedDate("2026-11-19"))
@@ -101,7 +101,7 @@ public class SampleDataUtil {
      */
     public static Set<DeliveryDay> getDeliveryDaySet(String... strings) {
         return Arrays.stream(strings)
-                .map(DeliveryDay::new)
+                .map(DeliveryDay::toDeliveryDay)
                 .collect(Collectors.toSet());
     }
 
