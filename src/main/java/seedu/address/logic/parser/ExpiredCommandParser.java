@@ -39,7 +39,6 @@ public class ExpiredCommandParser implements Parser<ExpiredCommand> {
 
         String dateString = argMultimap.getValue(PREFIX_DATE_BEFORE).get();
         LocalDate date = parseDate(dateString);
-
         PersonHasExpiredDeliveryPredicate predicate = new PersonHasExpiredDeliveryPredicate(date);
         return new ExpiredCommand(predicate);
     }
