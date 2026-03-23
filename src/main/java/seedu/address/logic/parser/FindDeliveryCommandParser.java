@@ -1,6 +1,11 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_FIND_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_FIND_END;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_FIND_START;
+
+import java.time.LocalDate;
 
 import seedu.address.logic.commands.FindDeliveryCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -11,6 +16,9 @@ import seedu.address.model.delivery.DeliveryDatePredicate;
  */
 public class FindDeliveryCommandParser implements Parser<FindDeliveryCommand> {
 
+    public static final String MESSAGE_START_AFTER_END =
+            "Start date must not be after end date.";
+
     /**
      * Parses the given {@code String} of arguments in the context of the
      * FindDeliveryCommand and returns a FindDeliveryCommand object for execution.
@@ -19,14 +27,40 @@ public class FindDeliveryCommandParser implements Parser<FindDeliveryCommand> {
      */
     public FindDeliveryCommand parse(String args) throws ParseException {
 
-        String trimmedArgs = args.trim();
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, PREFIX_FIND_DATE, PREFIX_FIND_START, PREFIX_FIND_END);
 
-        if (trimmedArgs.isEmpty()) {
+        if (!argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                            FindDeliveryCommand.MESSAGE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindDeliveryCommand.MESSAGE_USAGE));
         }
 
-        return new FindDeliveryCommand(new DeliveryDatePredicate(ParserUtil.parseDate(trimmedArgs)));
+        boolean hasDate = argMultimap.getValue(PREFIX_FIND_DATE).isPresent();
+        boolean hasStart = argMultimap.getValue(PREFIX_FIND_START).isPresent();
+        boolean hasEnd = argMultimap.getValue(PREFIX_FIND_END).isPresent();
+
+        if (hasDate && (hasStart || hasEnd)) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindDeliveryCommand.MESSAGE_USAGE));
+        }
+
+        if (hasDate) {
+            argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_FIND_DATE);
+            LocalDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_FIND_DATE).get());
+            return new FindDeliveryCommand(new DeliveryDatePredicate(date));
+        }
+
+        if (hasStart && hasEnd) {
+            argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_FIND_START, PREFIX_FIND_END);
+            LocalDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_FIND_START).get());
+            LocalDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_FIND_END).get());
+            if (startDate.isAfter(endDate)) {
+                throw new ParseException(MESSAGE_START_AFTER_END);
+            }
+            return new FindDeliveryCommand(new DeliveryDatePredicate(startDate, endDate));
+        }
+
+        throw new ParseException(
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindDeliveryCommand.MESSAGE_USAGE));
     }
 }
