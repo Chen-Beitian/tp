@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.DateTimeUtil.convertDayNumberToDayWord;
+import static seedu.address.commons.util.DateTimeUtil.isValidDeliveryDayNumber;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -224,11 +226,11 @@ public class ParserUtil {
      */
     public static DeliveryDay parseDeliveryDayNumber(String deliveryDayNumber) throws ParseException {
         requireNonNull(deliveryDayNumber);
-        if (!DeliveryDay.isValidDeliveryDayNumber(deliveryDayNumber)) {
+        if (!isValidDeliveryDayNumber(deliveryDayNumber)) {
             throw new ParseException(DeliveryDay.MESSAGE_CONSTRAINTS);
         }
-        // TODO: Refactor after the refactoring of the DeliveryDay.
-        String deliveryDayWord = DeliveryDay.convertDayNumberToDayWord(deliveryDayNumber);
+
+        String deliveryDayWord = convertDayNumberToDayWord(deliveryDayNumber);
         return new DeliveryDay(deliveryDayWord);
     }
 
