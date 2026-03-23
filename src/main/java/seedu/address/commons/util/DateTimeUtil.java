@@ -2,6 +2,7 @@ package seedu.address.commons.util;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
@@ -42,6 +43,14 @@ public class DateTimeUtil {
      */
     public static final DateTimeFormatter DAY_NUMBER_FORMATTER =
             DateTimeFormatter.ofPattern("e", Locale.UK).withResolverStyle(ResolverStyle.STRICT);
+
+    /**
+     * The time must follow the format HH:mm
+     * where HH is the hour value in the 24-hour format
+     * and mm is the minute value.
+     */
+    public static final DateTimeFormatter TIME_FORMATTER =
+            DateTimeFormatter.ofPattern("HH:mm").withResolverStyle(ResolverStyle.STRICT);
 
     /**
      * Returns true if a given string is a valid delivery date
@@ -129,5 +138,27 @@ public class DateTimeUtil {
     public static String convertDayNumberToDayWord(String dayNumber) throws DateTimeParseException {
         DayOfWeek day = DayOfWeek.from(DAY_NUMBER_FORMATTER.parse(dayNumber));
         return day.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+    }
+
+    /**
+     * Returns true if a given string is a valid time
+     * in the valid format.
+     */
+    public static boolean isValidDeliveryTime(String test) {
+        try {
+            LocalTime.parse(test, TIME_FORMATTER);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Parses raw time strings into the corresponding LocalTime object.
+     *
+     * @throws DateTimeParseException If the argument passed is an invalid delivery time value.
+     */
+    public static LocalTime parseDeliveryTime(String time) throws DateTimeParseException {
+        return LocalTime.parse(time, TIME_FORMATTER);
     }
 }
