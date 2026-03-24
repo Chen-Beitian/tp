@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.util.DateTimeUtil.convertDayNumberToDayWord;
 import static seedu.address.logic.commands.CommandTestUtil.UNSORTED_DAYS;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
@@ -8,7 +10,11 @@ import static seedu.address.model.delivery.DeliveryDay.toDeliveryDay;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
