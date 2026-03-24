@@ -17,7 +17,7 @@ public class ExpiredCommand extends Command {
     public static final String COMMAND_WORD = "expired";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Finds all persons whose deliveries have ended before the specified date "
+            + ": Finds all customers whose deliveries have ended before the specified date "
             + "and displays them as a list with index numbers.\n"
             + "Parameters: "
             + PREFIX_BEFORE_DATE + "DATE (yyyy-MM-dd)\n"

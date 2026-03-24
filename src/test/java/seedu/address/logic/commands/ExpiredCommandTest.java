@@ -116,7 +116,7 @@ public class ExpiredCommandTest {
         // null -> returns false
         assertFalse(firstCommand.equals(null));
 
-        // different find command -> returns false
+        // different expired command -> returns false
         assertFalse(firstCommand.equals(secondCommand));
     }
 
