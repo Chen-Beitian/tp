@@ -122,7 +122,7 @@ public class RescheduleCommand extends Command {
             throw new CommandException(Delivery.MESSAGE_CONSTRAINTS);
         }
 
-        Delivery rescheduledDelivery = new Delivery(startDate, endDate, deliveryDays, deliveryTime, new HashSet<>());
+        Delivery rescheduledDelivery = new Delivery(startDate, endDate, deliveryDays, deliveryTime);
         return rescheduledDelivery;
     }
 

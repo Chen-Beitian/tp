@@ -4,7 +4,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -25,7 +24,6 @@ public class Delivery {
     private final EndDate endDate;
     private final Set<DeliveryDay> deliveryDays = new LinkedHashSet<>();
     private final DeliveryTime deliveryTime;
-    private final Set<SkippedDate> skippedDates = new HashSet<>();
 
     /**
      * Every field must be present and not null.
@@ -33,15 +31,13 @@ public class Delivery {
     public Delivery(StartDate startDate,
                     EndDate endDate,
                     Set<DeliveryDay> deliveryDays,
-                    DeliveryTime deliveryTime,
-                    Set<SkippedDate> skippedDates) {
-        requireAllNonNull(startDate, endDate, deliveryDays, deliveryTime, skippedDates);
+                    DeliveryTime deliveryTime) {
+        requireAllNonNull(startDate, endDate, deliveryDays, deliveryTime);
         checkArgument(isValidDateRange(startDate, endDate), MESSAGE_CONSTRAINTS);
         this.startDate = startDate;
         this.endDate = endDate;
         this.deliveryDays.addAll(deliveryDays);
         this.deliveryTime = deliveryTime;
-        this.skippedDates.addAll(skippedDates);
     }
 
     public static boolean isValidDateRange(StartDate startDate, EndDate endDate) {
@@ -66,14 +62,6 @@ public class Delivery {
      */
     public Set<DeliveryDay> getDeliveryDays() {
         return Collections.unmodifiableSet(deliveryDays);
-    }
-
-    /**
-     * Returns an immutable skipped date set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<SkippedDate> getSkippedDates() {
-        return Collections.unmodifiableSet(skippedDates);
     }
 
     /**
@@ -113,14 +101,13 @@ public class Delivery {
         return startDate.equals(otherDelivery.startDate)
                 && endDate.equals(otherDelivery.endDate)
                 && deliveryDays.equals(otherDelivery.deliveryDays)
-                && deliveryTime.equals(otherDelivery.deliveryTime)
-                && skippedDates.equals(otherDelivery.skippedDates);
+                && deliveryTime.equals(otherDelivery.deliveryTime);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(startDate, endDate, deliveryDays, deliveryTime, skippedDates);
+        return Objects.hash(startDate, endDate, deliveryDays, deliveryTime);
     }
 
     @Override
@@ -130,7 +117,6 @@ public class Delivery {
                 .add("end date", endDate)
                 .add("delivery days", deliveryDays)
                 .add("delivery time", deliveryTime)
-                .add("skipped dates", skippedDates)
                 .toString();
     }
 }

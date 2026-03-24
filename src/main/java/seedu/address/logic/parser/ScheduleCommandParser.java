@@ -56,12 +56,7 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
             throw new ParseException(Delivery.MESSAGE_CONSTRAINTS);
         }
 
-        // TODO: Remove Set<SkippedDate> from constructor after removing SkippedDate.
-        Delivery delivery = new Delivery(startDate,
-                                         endDate,
-                                         deliveryDayList,
-                                         deliveryTime,
-                                         new HashSet<>());
+        Delivery delivery = new Delivery(startDate, endDate, deliveryDayList, deliveryTime);
 
         return new ScheduleCommand(index, delivery);
     }

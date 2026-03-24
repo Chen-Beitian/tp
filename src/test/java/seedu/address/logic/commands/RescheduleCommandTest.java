@@ -66,14 +66,8 @@ public class RescheduleCommandTest {
 
         Delivery firstPersonsDelivery = firstPerson.getDelivery();
 
-        // A hotfix before skipped date is removed from Delivery
-        Delivery editedDelivery = new DeliveryBuilder()
-                .withStartDate(firstPersonsDelivery.getStartDate().toString())
-                .withEndDate(firstPersonsDelivery.getEndDate().toString())
-                .withDeliveryDays(firstPersonsDelivery.getDeliveryDays().stream()
-                        .map(day -> day.toString()).toArray(String[]::new))
-                .withDeliveryTime(VALID_DELIVERY_TIME_AMY)
-                .build();
+        Delivery editedDelivery = new DeliveryBuilder(firstPersonsDelivery)
+                .withDeliveryTime(VALID_DELIVERY_TIME_AMY).build();
         Person personWithEditedDelivery = new PersonBuilder(firstPerson).withDelivery(editedDelivery).build();
 
         RescheduleDeliveryDescriptor descriptor = new RescheduleDeliveryDescriptorBuilder()
@@ -96,23 +90,11 @@ public class RescheduleCommandTest {
                 new RescheduleDeliveryDescriptor());
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
 
-        Delivery firstPersonsDelivery = firstPerson.getDelivery();
-
-        // A hotfix before skipped date is removed from Delivery
-        Delivery editedDelivery = new DeliveryBuilder()
-                .withStartDate(firstPersonsDelivery.getStartDate().toString())
-                .withEndDate(firstPersonsDelivery.getEndDate().toString())
-                .withDeliveryDays(firstPersonsDelivery.getDeliveryDays().stream()
-                        .map(day -> day.toString()).toArray(String[]::new))
-                .withDeliveryTime(firstPersonsDelivery.getDeliveryTime().toString())
-                .build();
-        Person firstPersonHotFix = new PersonBuilder(firstPerson).withDelivery(editedDelivery).build();
-
         String expectedMessage = String.format(
-                RescheduleCommand.MESSAGE_EDIT_DELIVERY_SUCCESS, Messages.formatDeliveryFromPerson(firstPersonHotFix));
+                RescheduleCommand.MESSAGE_EDIT_DELIVERY_SUCCESS, Messages.formatDeliveryFromPerson(firstPerson));
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.setPerson(firstPerson, firstPersonHotFix);
+        expectedModel.setPerson(firstPerson, firstPerson);
 
         assertCommandSuccess(rescheduleCommand, model, expectedMessage, expectedModel);
     }

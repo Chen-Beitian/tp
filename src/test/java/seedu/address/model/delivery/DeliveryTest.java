@@ -32,7 +32,7 @@ public class DeliveryTest {
         Set<DeliveryDay> deliveryDaySet = new HashSet<>();
         deliveryDaySet.add(toDeliveryDay(VALID_DELIVERY_DAY));
         assertThrows(IllegalArgumentException.class, () ->
-                new Delivery(startDate, endDate, deliveryDaySet, deliveryTime, new HashSet<>()));
+                new Delivery(startDate, endDate, deliveryDaySet, deliveryTime));
     }
 
     @Test
@@ -82,18 +82,13 @@ public class DeliveryTest {
         // different delivery days -> returns false
         editedDeliveryOne = new DeliveryBuilder(DELIVERY_ALICE).withDeliveryDays(VALID_DELIVERY_DAY).build();
         assertFalse(DELIVERY_ALICE.equals(editedDeliveryOne));
-
-        // different skipped date -> returns false
-        editedDeliveryOne = new DeliveryBuilder(DELIVERY_ALICE).withSkippedDates(VALID_SKIPPED_DATE).build();
-        assertFalse(DELIVERY_ALICE.equals(editedDeliveryOne));
     }
 
     @Test
     public void toStringMethod() {
         String expected = Delivery.class.getCanonicalName() + "{start date=" + DELIVERY_ALICE.getStartDate()
                 + ", end date=" + DELIVERY_ALICE.getEndDate() + ", delivery days=" + DELIVERY_ALICE.getDeliveryDays()
-                + ", delivery time=" + DELIVERY_ALICE.getDeliveryTime()
-                + ", skipped dates=" + DELIVERY_ALICE.getSkippedDates() + "}";
+                + ", delivery time=" + DELIVERY_ALICE.getDeliveryTime() + "}";
         assertEquals(expected, DELIVERY_ALICE.toString());
     }
 }

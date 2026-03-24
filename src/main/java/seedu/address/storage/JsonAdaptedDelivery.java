@@ -106,7 +106,6 @@ public class JsonAdaptedDelivery {
 
         final DeliveryTime modelDeliveryTime = new DeliveryTime(deliveryTime);
 
-        // Hotfix until SkippedDate is removed from Delivery
-        return new Delivery(modelStartDate, modelEndDate, modelDeliveryDays, modelDeliveryTime, new HashSet<>());
+        return new Delivery(modelStartDate, modelEndDate, modelDeliveryDays, modelDeliveryTime);
     }
 }
