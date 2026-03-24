@@ -45,7 +45,7 @@ public class CommandTestUtil {
 
     public static final String VALID_START_DATE_AMY = "2019-11-12";
     public static final String VALID_START_DATE_BOB = "2025-10-29";
-    public static final String VALID_END_DATE_AMY = "2020-01-11";
+    public static final String VALID_END_DATE_AMY = "2026-01-11";
     public static final String VALID_END_DATE_BOB = "2025-11-11";
     public static final String VALID_DELIVERY_TIME_AMY = "20:20";
     public static final String VALID_DELIVERY_TIME_BOB = "12:13";

@@ -1,5 +1,7 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.commons.util.DateTimeUtil.formatDeliveryDate;
+import static seedu.address.commons.util.DateTimeUtil.parseDeliveryDate;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.DAYS_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.END_DATE_DESC_BOB;
@@ -25,6 +27,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ScheduleCommand;
@@ -32,7 +35,6 @@ import seedu.address.model.delivery.Delivery;
 import seedu.address.model.delivery.DeliveryTime;
 import seedu.address.model.delivery.EndDate;
 import seedu.address.model.delivery.StartDate;
-import seedu.address.model.delivery.fields.NumberOfDays;
 import seedu.address.testutil.DeliveryBuilder;
 
 public class ScheduleCommandParserTest {
@@ -152,5 +154,15 @@ public class ScheduleCommandParserTest {
                            INDEX_FIRST_PERSON.getOneBased() + START_DATE_DESC_BOB
                                    + END_DATE_DESC_BOB + TIME_DESC_BOB + INVALID_DAYS_DESC,
                            MESSAGE_INVALID_DAY_NUMBER);
+
+        // start date is after the end date
+        LocalDate startDateValue = parseDeliveryDate(VALID_START_DATE_BOB);
+        LocalDate endDateValue = startDateValue.plusDays(-5);
+        String endDateDesc =" " + PREFIX_END_DATE + formatDeliveryDate(endDateValue);
+
+        assertParseFailure(parser,
+                           INDEX_FIRST_PERSON.getOneBased() + START_DATE_DESC_BOB
+                                   + endDateDesc + TIME_DESC_BOB + DAYS_DESC_BOB,
+                           Delivery.MESSAGE_CONSTRAINTS);
     }
 }
