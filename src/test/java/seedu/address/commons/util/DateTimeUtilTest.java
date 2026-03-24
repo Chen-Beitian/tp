@@ -57,6 +57,16 @@ public class DateTimeUtilTest {
     }
 
     @Test
+    public void formatDeliveryDate() {
+        // null delivery date
+        assertThrows(NullPointerException.class, () -> DateTimeUtil.formatDeliveryDate(null));
+
+        // valid delivery date
+        LocalDate date = LocalDate.of(2019, 10, 15);
+        assertEquals("2019-10-15", DateTimeUtil.formatDeliveryDate(date));
+    }
+
+    @Test
     public void isValidDeliveryDayWord() {
         // null day
         assertThrows(NullPointerException.class, () -> DateTimeUtil.isValidDeliveryDayWord(null));
