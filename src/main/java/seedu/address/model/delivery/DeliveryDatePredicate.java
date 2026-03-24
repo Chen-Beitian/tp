@@ -50,11 +50,11 @@ public class DeliveryDatePredicate implements Predicate<Person> {
             return false;
         }
 
-        for (DeliveryDay deliveryDay : delivery.getDeliveryDays()) {
-            LocalDate firstOccurrence = overlapStart.with(TemporalAdjusters.nextOrSame(deliveryDay.day));
-            if (!firstOccurrence.isAfter(overlapEnd)) {
-                return true;
-            }
+        DayOfWeek targetDay = targetDate.getDayOfWeek();
+
+        if (delivery.getDeliveryDays().stream()
+                .noneMatch(deliveryDay -> deliveryDay.isSameDay(targetDay))) {
+            return false;
         }
 
         return false;
