@@ -185,7 +185,7 @@ Examples:
 
 Adds a delivery or overwrites the existing delivery associated with the specified customer.
 
-Format: `schedule INDEX d/START_DATE n/NUMBER_OF_DAYS t/DELIVERY_TIME days/DELIVERY_DAYS`
+Format: `schedule INDEX st/START_DATE ed/END DATE tm/DELIVERY_TIME d/DELIVERY_DAYS`
 
 * Adds the delivery for the customer at the specified `INDEX`.
 * If the specified customer already has a delivery, the delivery field is overwritten.
@@ -194,8 +194,8 @@ Format: `schedule INDEX d/START_DATE n/NUMBER_OF_DAYS t/DELIVERY_TIME days/DELIV
 * `DELIVERY_DAYS` must be a set of numbers **within the range of 1-7 inclusive** without whitespaces where 1 = Monday, 2 = Tuesday, …​, 7 = Sunday.
 
 Examples:
-* `schedule 1 d/2026-02-01 n/1 t/12:59 days/125`
-* `schedule 4 d/2026-03-11 n/12 t/13:48 days/2456`
+* `schedule 1 st/2026-02-01 ed/2026-02-02 tm/13:00 d/125`
+* `schedule 4 st/2026-03-11 ed/2026-04-01 tm/15:30 d/2456`
 
 ### Unscheduling a delivery : `unschedule`
 
