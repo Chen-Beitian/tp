@@ -35,22 +35,22 @@ public class FindDeliveryCommandParser implements Parser<FindDeliveryCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindDeliveryCommand.MESSAGE_USAGE));
         }
 
-        boolean hasDate = argMultimap.getValue(PREFIX_FIND_DATE).isPresent();
-        boolean hasStart = argMultimap.getValue(PREFIX_START_DATE).isPresent();
-        boolean hasEnd = argMultimap.getValue(PREFIX_END_DATE).isPresent();
+        boolean hasExactDate = argMultimap.getValue(PREFIX_FIND_DATE).isPresent();
+        boolean hasStartDate = argMultimap.getValue(PREFIX_START_DATE).isPresent();
+        boolean hasEndDate = argMultimap.getValue(PREFIX_END_DATE).isPresent();
 
-        if (hasDate && (hasStart || hasEnd)) {
+        if (hasExactDate && (hasStartDate || hasEndDate)) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindDeliveryCommand.MESSAGE_USAGE));
         }
 
-        if (hasDate) {
+        if (hasExactDate) {
             argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_FIND_DATE);
             LocalDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_FIND_DATE).get());
             return new FindDeliveryCommand(new DeliveryDatePredicate(date));
         }
 
-        if (hasStart && hasEnd) {
+        if (hasStartDate && hasEndDate) {
             argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_START_DATE, PREFIX_END_DATE);
             LocalDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START_DATE).get());
             LocalDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END_DATE).get());
