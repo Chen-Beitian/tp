@@ -52,7 +52,6 @@ public class CommandTestUtil {
     public static final String VALID_DELIVERY_DAY_AMY = "Monday";
     public static final String VALID_DELIVERY_DAY_BOB = "Wednesday";
 
-    public static final String SORTED_DAYS = "1234567";
     public static final String UNSORTED_DAYS = "4231";
 
     public static final String VALID_DAYS_AMY = "1";
