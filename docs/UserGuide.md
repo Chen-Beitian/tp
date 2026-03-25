@@ -151,21 +151,21 @@ Examples:
 
 ### Locating customers by delivery date: `find-delivery`
 
-Finds customers who have a delivery scheduled on the given date.
+Finds customers who have a delivery scheduled on the given date or within the given date range.
 
-Format: `find-delivery DATE`
+Format: `find-delivery dt/DATE` or `find-delivery st/START_DATE ed/END_DATE`
 
-* The date should be in the format `yyyy-MM-dd`, where `yyyy` is the 4-digit year, `MM` is the 2-digit month, and `dd` is the 2-digit day. e.g. `2026-04-01`
+* All dates must be in the format `yyyy-MM-dd`, where `yyyy` is the 4-digit year, `MM` is the 2-digit month, and `dd` is the 2-digit day. e.g. `2026-04-01`
+* `dt/` searches for an exact date. `st/` and `ed/` must be used together to search within a date range (inclusive).
 * A customer is shown only if all of the following are true:
   * They have a delivery assigned.
-  * The given date falls within their delivery's start and end dates (inclusive).
-  * The day of week of the given date matches one of their scheduled delivery days.
-  * The given date has not been marked as a skipped date.
+  * The given date (or date range) overlaps with their delivery's start and end dates.
+  * At least one of their scheduled delivery days falls within the overlapping period.
 * If no customers match, an empty list is shown.
 
 Examples:
-* `find-delivery 2026-04-01` returns all customers with a delivery on Wednesday, 1 April 2026.
-* `find-delivery 2026-12-25` returns all customers with a delivery on Friday, 25 December 2026.
+* `find-delivery dt/2026-04-01` returns all customers with a delivery on Wednesday, 1 April 2026.
+* `find-delivery st/2026-04-01 ed/2026-04-30` returns all customers with at least one delivery in April 2026.
 
 ### Deleting a customer : `delete`
 
@@ -273,7 +273,8 @@ Action         | Format, Examples
 **Clear**      | `clear`
 **Delete**     | `delete INDEX`<br> e.g., `delete 3`
 **Edit**       | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**       | `find [n/NAME_KEYWORDS...] [a/ADDRESS_KEYWORDS...] [t/TAG_KEYWORDS...]`<br> e.g., `find n/James Jake a/Jurong`
-**Unschedule** | `unschedule INDEX`<br> e.g., `unschedule 3`
+**Find**            | `find [n/NAME_KEYWORDS...] [a/ADDRESS_KEYWORDS...] [t/TAG_KEYWORDS...]`<br> e.g., `find n/James Jake a/Jurong`
+**Find Delivery**   | `find-delivery dt/DATE` or `find-delivery st/START_DATE ed/END_DATE`<br> e.g., `find-delivery dt/2026-04-01` or `find-delivery st/2026-04-01 ed/2026-04-30`
+**Unschedule**      | `unschedule INDEX`<br> e.g., `unschedule 3`
 **List**       | `list`
 **Help**       | `help`
