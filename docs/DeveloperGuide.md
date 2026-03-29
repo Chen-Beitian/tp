@@ -181,6 +181,46 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Reschedule delivery
 
+**Objective:** Allows administrative staff to edit a delivery that is associated with the specified customer.
+
+#### Implementation details
+The following sequence diagram illustrates the interactions within the `Logic` component for rescheduling a delivery:
+
+<box type="info" seamless>
+
+**Note:** The lifeline for `RescheduleCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
+</box>
+
+<puml src="diagrams/RescheduleSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `reschedule 1 tm/14:00` Command" />
+
+**Execution flow:**
+1. The user enters the `reschedule` command as an input string.
+2. `LogicManager` receives the input string and passes it to `AddressBookParser`.
+3. `AddressBookParser` creates an `RescheduleCommandParser` to parse the command arguments.
+4. `RescheduleCommandParser` parses the index and creates an `RescheduleCommand` object.
+5. `LogicManager` executes the `RescheduleCommand` object.
+6. `RescheduleCommand` checks whether the specified customer and their delivery exist.
+7. If the customer has a delivery, `RescheduleCommand` creates a new `Person` object with an updated delivery.
+8. `RescheduleCommand` requests `Model` to replace the old entry in the address book with the newly created `Person` object.
+9. `RescheduleCommand` completes and returns the result of the `reschedule` command.
+
+#### Design considerations
+
+1. How the command is named.
+    * **Chosen:** Name the command as `reschedule`.
+        * Pros: User-friendly and intuitive, as it maintains consistency with delivery-related commands (`schedule`, `unschedule`).
+        * Cons: A domain-specific word that may not be familiar to users who tend to use common English words.
+    * **Alternative:** Name the command as `edit-delivery`.
+        * Pros: A descriptive name that is more likely to be familiar to users.
+        * Cons: Breaks consistency with `schedule` and `unschedule`.
+2. How `reschedule` edits the delivery of a person.
+    * **Chosen:** Implement a dedicated `reschedule` command.
+        * Pros: One-shot command that enables users to easily edit the delivery of the specified person.
+        * Cons: Requires implementing a new command class.
+    * **Alternative:** Instruct the user to delete the delivery of the specified customer and add them back with their new delivery details.
+        * Pros: Reuses existing `unschedule` and `schedule` commands without needing additional implementation effort.
+        * Cons: More error-prone, as the user must manually re-enter the delivery details.
+
 ### Unschedule delivery
 
 **Objective:** Allows administrative staff to delete a delivery that is associated with the specified customer, without deleting the customer record.
