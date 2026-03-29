@@ -50,8 +50,8 @@ LogicManager -> RescheduleCommand : execute(m)
 
 activate RescheduleCommand
 note right of RescheduleCommand
-  target: customer whose delivery is to be rescheduled
-  updated: copy of target with delivery rescheduled
+  target: customer with delivery to reschedule
+  updated: copy of target with rescheduled delivery
 end note
 RescheduleCommand -> Model : setPerson(target, updated)
 activate Model

@@ -209,7 +209,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
 1. How the command is named.
     * **Chosen:** Name the command as `reschedule`.
         * Pros: User-friendly and intuitive, as it maintains consistency with delivery-related commands (`schedule`, `unschedule`).
-        * Cons: A domain-specific word that may not be familiar to users who tend to use common English words.
+        * Cons: May imply changing only the delivery time, while it supports editing other delivery details (e.g., date or notes), which can create mismatched expectations.
     * **Alternative:** Name the command as `edit-delivery`.
         * Pros: A descriptive name that is more likely to be familiar to users.
         * Cons: Breaks consistency with `schedule` and `unschedule`.
@@ -217,9 +217,9 @@ The following sequence diagram illustrates the interactions within the `Logic` c
     * **Chosen:** Implement a dedicated `reschedule` command.
         * Pros: One-shot command that enables users to easily edit the delivery of the specified person.
         * Cons: Requires implementing a new command class.
-    * **Alternative:** Instruct the user to delete the delivery of the specified customer and add them back with their new delivery details.
-        * Pros: Reuses existing `unschedule` and `schedule` commands without needing additional implementation effort.
-        * Cons: More error-prone, as the user must manually re-enter the delivery details.
+    * **Alternative:** Instruct the user to add a new delivery with updated details to the person, overwriting the old delivery.
+        * Pros: Reuses existing `schedule` commands without needing additional implementation effort.
+        * Cons: More error-prone, as the user must manually re-enter all delivery details.
 
 ### Unschedule delivery
 

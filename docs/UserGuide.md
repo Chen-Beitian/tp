@@ -242,13 +242,13 @@ Edits the delivery associated with the specified customer.
 Format: `reschedule INDEX [st/START_DATE] [ed/END_DATE] [tm/DELIVERY_TIME] [d/DELIVERY_DAYS]`
 
 * Parameters `st/`, `ed/`, `tm/` and `d/` are optional, but at least one of them must be provided.
-* Existing values will be updated to the input values.Edits the delivery associated with the customer at the specified `INDEX`.
+* Existing values will be updated to the input values. Edits the delivery associated with the customer at the specified `INDEX`.
 * The specified customer must have an existing delivery.
 * The index refers to the index number shown in the displayed customer panel.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `reschedule 1 ed/2026-02-02 tm/12:59` Edits the delivery end date and delivery time for the 1st customer to be `2026-02-02` and `12:59` respectively.
+* `reschedule 1 ed/2026-02-02 tm/12:45` Edits the delivery end date and delivery time for the 1st customer to be `2026-02-02` and `12:45` respectively.
 * `reschedule 2 d/25` Edits the delivery days for the 2nd customer to be `25` (Tuesday and Friday).
   ![result for 'reschedule 2 d/25'](images/rescheduleBernice.png)
 
