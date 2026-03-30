@@ -82,8 +82,6 @@ public class ScheduleCommand extends Command {
 
         Person personWithDelivery = addDeliveryToPerson(personToSchedule, toSchedule);
 
-        logger.fine("Customer created: " + personWithDelivery);
-
         assert personWithDelivery.hasDelivery();
 
         model.setPerson(personToSchedule, personWithDelivery);
