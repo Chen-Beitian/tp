@@ -32,6 +32,8 @@ public class DeliveryTime {
     /**
      * Returns true if a given string is a valid time
      * in the valid format.
+     *
+     * @param test The raw string
      */
     public static boolean isValidDeliveryTime(String test) {
         return DateTimeUtil.isValidDeliveryTime(test);

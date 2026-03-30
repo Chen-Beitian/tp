@@ -28,6 +28,9 @@ public enum DeliveryDay {
 
     /**
      * Private constructor for enum to store DayOfWeek value.
+     *
+     * @param day The raw string that represents
+     *            the day of delivery and should be parsed.
      */
     DeliveryDay(String day) {
         this.day = parseDeliveryDayWord(day);
@@ -65,6 +68,11 @@ public enum DeliveryDay {
     /**
      * Returns true if the day passed as the argument has the same value
      * as the day stored in the enum value.
+     *
+     * @param otherDay The DayOfWeek object that this object
+     *                 should be compared to.
+     * @return Boolean whether the DayOfWeek object stored
+     *         in this object is equal to otherDay.
      */
     public boolean isSameDay(DayOfWeek otherDay) {
         return day.equals(otherDay);
@@ -73,6 +81,11 @@ public enum DeliveryDay {
     /**
      * Returns true if a given string is a valid
      * day of the week in the valid format.
+     *
+     * @param test The raw string to be checked whether
+     *             it is a valid delivery day.
+     * @return Boolean whether the given string {@code test}
+     *         is a valid delivery day.
      */
     public static boolean isValidDeliveryDay(String test) {
         return isValidDeliveryDayWord(test);

@@ -40,6 +40,11 @@ public class StartDate {
     /**
      * Returns true if a given string is a valid
      * start date in the valid format.
+     *
+     * @param test The raw string to be checked whether
+     *             it is a valid start date.
+     * @return Boolean whether the given string {@code test}
+     *         is a valid start date.
      */
     public static boolean isValidStartDate(String test) {
         return isValidDeliveryDate(test);

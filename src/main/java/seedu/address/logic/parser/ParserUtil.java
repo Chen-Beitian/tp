@@ -135,10 +135,13 @@ public class ParserUtil {
         return new Tag(trimmedTag);
     }
 
+    //@author Chen-Beitian
     /**
      * Parses a {@code String date} into a {@code LocalDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param date The raw string to parse a date from.
+     * @return The LocalDate object that represents the date.
      * @throws ParseException if the given {@code date} is not in yyyy-MM-dd format.
      */
     public static LocalDate parseDate(String date) throws ParseException {
@@ -150,6 +153,7 @@ public class ParserUtil {
 
         return parseDeliveryDate(trimmedDate);
     }
+    //@author
 
     /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
@@ -163,10 +167,13 @@ public class ParserUtil {
         return tagSet;
     }
 
+    //@author BenedTj
     /**
      * Parses {@code String startDate} into a {@code StartDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param startDate The raw string to parse a start date from.
+     * @return The StartDate object that represents the start date.
      * @throws ParseException if the given {@code startDate} is invalid.
      */
     public static StartDate parseStartDate(String startDate) throws ParseException {
@@ -178,6 +185,7 @@ public class ParserUtil {
         return new StartDate(trimmedStartDate);
     }
 
+    //@author MrMarshall12
     /**
      * Parses {@code String endDate} into a {@code EndDate}.
      *
@@ -194,10 +202,13 @@ public class ParserUtil {
         return new EndDate(trimmedEndDate);
     }
 
+    //@author BenedTj
     /**
      * Returns the {@code String deliveryTime} into a {@code DeliveryTime}
      * Leading and trailing whitespaces are trimmed.
      *
+     * @param deliveryTime The raw string to parse a delivery time from.
+     * @return The DeliveryTime object that represents the delivery time.
      * @throws ParseException if the given {@code deliveryTime} is invalid.
      */
     public static DeliveryTime parseDeliveryTime(String deliveryTime) throws ParseException {
@@ -213,6 +224,8 @@ public class ParserUtil {
      * Parses a {@code String deliveryDayNumber} into a {@code DeliveryDay}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param deliveryDayNumber The raw string to parse a delivery day number from.
+     * @return The DeliveryDay object that represents the delivery day number.
      * @throws ParseException if the given {@code deliveryDayNumber} is invalid.
      */
     public static DeliveryDay parseDeliveryDayNumber(String deliveryDayNumber) throws ParseException {
@@ -227,6 +240,11 @@ public class ParserUtil {
 
     /**
      * Parses {@code Collection<String> deliveryDays} into {@code Set<DeliveryDay>}.
+     *
+     * @param deliveryDays The raw string to parse delivery days from.
+     * @return A set of the DeliveryDay objects that represents the delivery days.
+     * @throws ParseException if any of the characters in {@code deliveryDays}
+     *                        cannot be parsed into a DeliveryDay object.
      */
     public static Set<DeliveryDay> parseDeliveryDays(String deliveryDays) throws ParseException {
         requireNonNull(deliveryDays);
