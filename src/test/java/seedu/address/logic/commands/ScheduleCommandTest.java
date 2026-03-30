@@ -70,7 +70,7 @@ public class ScheduleCommandTest {
     }
 
     @Test
-    public void execute_personAlreadyWithDeliveryUnfilteredList_overwriteDelivery() {
+    public void execute_personAlreadyWithDeliveryUnfilteredList_failure() {
         Delivery delivery = new DeliveryBuilder().build();
         Person personToSchedule = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
 
@@ -115,7 +115,7 @@ public class ScheduleCommandTest {
     }
 
     @Test
-    public void execute_personAlreadyWithDeliveryFilteredList_overwriteDelivery() {
+    public void execute_personAlreadyWithDeliveryFilteredList_failure() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Delivery delivery = new DeliveryBuilder().build();
