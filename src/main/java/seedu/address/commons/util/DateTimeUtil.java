@@ -76,8 +76,8 @@ public class DateTimeUtil {
      * @param date The string that is attempted
      *             to be parsed into LocalDate.
      * @return LocalDate object representing the parsed date.
-     * @throws NullPointerException if the argument passed is null.
-     * @throws DateTimeParseException if the argument passed is an invalid delivery date value.
+     * @throws NullPointerException If the argument passed is null.
+     * @throws DateTimeParseException If the argument passed is an invalid delivery date value.
      */
     public static LocalDate parseDeliveryDate(String date) throws NullPointerException, DateTimeParseException {
         requireNonNull(date, "delivery date must not be null");
@@ -90,8 +90,8 @@ public class DateTimeUtil {
      *
      * @param date The LocalDate object to be formatted into a string.
      * @return String that is the formatted version of the date.
-     * @throws NullPointerException if {@code date} is null.
-     * @throws DateTimeException if an error occurs during formatting.
+     * @throws NullPointerException If {@code date} is null.
+     * @throws DateTimeException If an error occurs during formatting.
      */
     public static String formatDeliveryDate(LocalDate date)
             throws NullPointerException, DateTimeException {
@@ -131,9 +131,9 @@ public class DateTimeUtil {
      *            to be parsed into DayOfWeek.
      * @return DayOfWeek object representing
      *         the parsed day word value.
-     * @throws NullPointerException if the argument passed is null.
-     * @throws DateTimeParseException if the argument passed is an invalid delivery day word value.
-     * @throws IllegalArgumentException if an empty string is passed as the argument.
+     * @throws NullPointerException If the argument passed is null.
+     * @throws DateTimeParseException If the argument passed is an invalid delivery day word value.
+     * @throws IllegalArgumentException If an empty string is passed as the argument.
      */
     public static DayOfWeek parseDeliveryDayWord(String day)
             throws NullPointerException, DateTimeParseException, IllegalArgumentException {
@@ -173,8 +173,8 @@ public class DateTimeUtil {
      *
      * @param dayNumber The number representing the day of the week as a string.
      * @return The full word that represents the day of the week.
-     * @throws NullPointerException if the argument passed is null.
-     * @throws DateTimeParseException if the argument passed is an invalid delivery day number value.
+     * @throws NullPointerException If the argument passed is null.
+     * @throws DateTimeParseException If the argument passed is an invalid delivery day number value.
      */
     public static String convertDayNumberToDayWord(String dayNumber)
             throws NullPointerException, DateTimeParseException {
@@ -189,8 +189,8 @@ public class DateTimeUtil {
      *
      * @param day The DayOfWeek object to be formatted into a string.
      * @return String that is the formatted version of the day number value.
-     * @throws NullPointerException if {@code day} is null.
-     * @throws DateTimeException if an error occurs during formatting.
+     * @throws NullPointerException If {@code day} is null.
+     * @throws DateTimeException If an error occurs during formatting.
      */
     public static String formatDayNumber(DayOfWeek day) {
         requireNonNull(day, "delivery day must not be null");
@@ -222,8 +222,8 @@ public class DateTimeUtil {
      *            to be parsed into LocalTime.
      * @return LocalTime object representing
      *         the parsed time value.
-     * @throws NullPointerException if the argument passed is null.
-     * @throws DateTimeParseException if the argument passed is an invalid delivery time value.
+     * @throws NullPointerException If the argument passed is null.
+     * @throws DateTimeParseException If the argument passed is an invalid delivery time value.
      */
     public static LocalTime parseDeliveryTime(String time) throws NullPointerException, DateTimeParseException {
         requireNonNull(time, "delivery time must not be null");

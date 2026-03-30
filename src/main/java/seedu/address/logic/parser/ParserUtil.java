@@ -51,7 +51,7 @@ public class ParserUtil {
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
      *
-     * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
+     * @throws ParseException If the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
@@ -65,7 +65,7 @@ public class ParserUtil {
      * Parses a {@code String name} into a {@code Name}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code name} is invalid.
+     * @throws ParseException If the given {@code name} is invalid.
      */
     public static Name parseName(String name) throws ParseException {
         requireNonNull(name);
@@ -80,7 +80,7 @@ public class ParserUtil {
      * Parses a {@code String phone} into a {@code Phone}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code phone} is invalid.
+     * @throws ParseException If the given {@code phone} is invalid.
      */
     public static Phone parsePhone(String phone) throws ParseException {
         requireNonNull(phone);
@@ -95,7 +95,7 @@ public class ParserUtil {
      * Parses a {@code String address} into an {@code Address}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code address} is invalid.
+     * @throws ParseException If the given {@code address} is invalid.
      */
     public static Address parseAddress(String address) throws ParseException {
         requireNonNull(address);
@@ -110,7 +110,7 @@ public class ParserUtil {
      * Parses a {@code String email} into an {@code Email}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code email} is invalid.
+     * @throws ParseException If the given {@code email} is invalid.
      */
     public static Email parseEmail(String email) throws ParseException {
         requireNonNull(email);
@@ -125,7 +125,7 @@ public class ParserUtil {
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code tag} is invalid.
+     * @throws ParseException If the given {@code tag} is invalid.
      */
     public static Tag parseTag(String tag) throws ParseException {
         requireNonNull(tag);
@@ -143,7 +143,7 @@ public class ParserUtil {
      *
      * @param date The raw string to parse a date from.
      * @return The LocalDate object that represents the date.
-     * @throws ParseException if the given {@code date} is not in yyyy-MM-dd format.
+     * @throws ParseException If the given {@code date} is not in yyyy-MM-dd format.
      */
     public static LocalDate parseDate(String date) throws ParseException {
         requireNonNull(date);
@@ -175,7 +175,7 @@ public class ParserUtil {
      *
      * @param startDate The raw string to parse a start date from.
      * @return The StartDate object that represents the start date.
-     * @throws ParseException if the given {@code startDate} is invalid.
+     * @throws ParseException If the given {@code startDate} is invalid.
      */
     public static StartDate parseStartDate(String startDate) throws ParseException {
         requireNonNull(startDate);
@@ -192,7 +192,7 @@ public class ParserUtil {
      *
      * @param endDate The end date to be parsed.
      * @return The EndDate object representing the end date.
-     * @throws ParseException if the given {@code endDate} is invalid.
+     * @throws ParseException If the given {@code endDate} is invalid.
      */
     public static EndDate parseEndDate(String endDate) throws ParseException {
         requireNonNull(endDate);
@@ -210,7 +210,7 @@ public class ParserUtil {
      *
      * @param deliveryTime The raw string to parse a delivery time from.
      * @return The DeliveryTime object that represents the delivery time.
-     * @throws ParseException if the given {@code deliveryTime} is invalid.
+     * @throws ParseException If the given {@code deliveryTime} is invalid.
      */
     public static DeliveryTime parseDeliveryTime(String deliveryTime) throws ParseException {
         requireNonNull(deliveryTime);
@@ -227,7 +227,7 @@ public class ParserUtil {
      *
      * @param deliveryDayNumber The raw string to parse a delivery day number from.
      * @return The DeliveryDay object that represents the delivery day number.
-     * @throws ParseException if the given {@code deliveryDayNumber} is invalid.
+     * @throws ParseException If the given {@code deliveryDayNumber} is invalid.
      */
     public static DeliveryDay parseDeliveryDayNumber(String deliveryDayNumber) throws ParseException {
         requireNonNull(deliveryDayNumber);
@@ -244,7 +244,7 @@ public class ParserUtil {
      *
      * @param deliveryDays The raw string to parse delivery days from.
      * @return A set of the DeliveryDay objects that represents the delivery days.
-     * @throws ParseException if any of the characters in {@code deliveryDays}
+     * @throws ParseException If any of the characters in {@code deliveryDays}
      *                        cannot be parsed into a DeliveryDay object.
      */
     public static Set<DeliveryDay> parseDeliveryDays(String deliveryDays) throws ParseException {
