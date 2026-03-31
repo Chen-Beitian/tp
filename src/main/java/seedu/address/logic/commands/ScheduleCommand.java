@@ -44,7 +44,7 @@ public class ScheduleCommand extends Command {
             + PREFIX_TIME + "12:59 "
             + PREFIX_DAYS + "124";
 
-    public static final String MESSAGE_SCHEDULE_DELIVERY_SUCCESS = "Scheduled Delivery for customer: %1$s";
+    public static final String MESSAGE_SCHEDULE_DELIVERY_SUCCESS = "Scheduled Delivery for Customer: %1$s";
     public static final String MESSAGE_PERSON_HAS_SCHEDULE = "Customer already has Delivery: %1$s";
 
     private final Index targetIndex;
