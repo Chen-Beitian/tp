@@ -27,6 +27,10 @@ public class DateTimeUtilTest {
         assertFalse(DateTimeUtil.isValidDeliveryDate("2020-01")); // does not contain date number
         assertFalse(DateTimeUtil.isValidDeliveryDate("12-01-2026")); // incorrect format
         assertFalse(DateTimeUtil.isValidDeliveryDate("2020-02-31")); // invalid date
+        assertFalse(DateTimeUtil.isValidDeliveryDate("-1000-12-3")); // negative year
+        // years with more than 4 digits
+        assertFalse(DateTimeUtil.isValidDeliveryDate("+99999999-12-31"));
+        assertFalse(DateTimeUtil.isValidDeliveryDate("-99999999-01-01"));
 
         // valid delivery date
         assertTrue(DateTimeUtil.isValidDeliveryDate("2019-10-15")); // correct format

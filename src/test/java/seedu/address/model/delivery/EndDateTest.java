@@ -6,8 +6,6 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.util.DateTimeUtil;
-
 public class EndDateTest {
 
     @Test
@@ -34,7 +32,11 @@ public class EndDateTest {
         assertFalse(EndDate.isValidEndDate("01-12")); // does not contain year
         assertFalse(EndDate.isValidEndDate("2020-01")); // does not contain date number
         assertFalse(EndDate.isValidEndDate("12-01-2026")); // incorrect format
-        assertFalse(DateTimeUtil.isValidDeliveryDate("2020-02-31")); // invalid date
+        assertFalse(EndDate.isValidEndDate("2020-02-31")); // invalid date
+        assertFalse(EndDate.isValidEndDate("-1000-12-3")); // negative year
+        // years with more than 4 digits
+        assertFalse(EndDate.isValidEndDate("+99999999-12-31"));
+        assertFalse(EndDate.isValidEndDate("-99999999-01-01"));
 
         // valid end date
         assertTrue(EndDate.isValidEndDate("2019-10-15")); // correct format
