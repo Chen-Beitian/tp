@@ -35,12 +35,12 @@ public class SampleDataUtil {
             new DeliveryTime("16:30")
     );
     private static final Delivery SAMPLE_DELIVERY_IRFAN = new Delivery(
-            new StartDate("2025-01-01"), new EndDate("2050-01-01"),
+            new StartDate("2025-01-01"), new EndDate("2100-01-01"),
             getDeliveryDaySet("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"),
             new DeliveryTime("16:45")
     );
     private static final Delivery SAMPLE_DELIVERY_ROY = new Delivery(
-            new StartDate("2020-12-25"), new EndDate("2040-12-25"),
+            new StartDate("2025-12-25"), new EndDate("2100-12-25"),
             getDeliveryDaySet("Saturday", "Sunday"),
             new DeliveryTime("16:15")
     );
@@ -54,7 +54,7 @@ public class SampleDataUtil {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                 new Address("Blk 30 Geylang Street 29, #06-40"),
-                getTagSet("Halal"),
+                getTagSet("Vegetarian"),
                 SAMPLE_DELIVERY_ALEX),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),

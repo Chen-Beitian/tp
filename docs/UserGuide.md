@@ -59,7 +59,7 @@ If Java is not installed, follow the installation guide for your operating syste
 Action | Command Format (with Examples)
 -----------------|-------------------------------------------------------------------------------------------------
 **Getting help** | `help`
-**Add customer** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…`<br><br>Example:<br>`add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/Vegan t/West`
+**Add customer** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…`<br><br>Example:<br>`add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/Halal t/NoEgg`
 **List all customers** | `list`
 **Edit customer** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…`<br><br>Example:<br>`edit 2 n/James Lee e/jameslee@example.com`
 **Delete customer** | `delete INDEX`<br><br>Example:<br>`delete 3`
@@ -88,7 +88,7 @@ Action | Command Format (with Examples)
   e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/Halal` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/Vegetarian`, `t/Vegetarian t/East` etc.
+  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/Vegetarian`, `t/Vegetarian t/NoSeafood` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -106,7 +106,7 @@ Action | Command Format (with Examples)
 
 Displays a help message with a link to access ServeMate's User Guide.
 
-![help message](images/helpResult.png)
+![help message](images/HelpCommand.png)
 
 Format: `help`
 
@@ -124,7 +124,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/Halal e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/Betsy Crowe t/LactoseIntolerant e/betsycrowe@example.com a/Newton Rd p/1234567 t/Vegetarian`
+  ![result for 'add n/Betsy Crowe t/LactoseIntolerant e/betsycrowe@example.com a/Newton Rd p/1234567 t/Vegetarian'](images/AddCommand.png)
 
 ### Listing all customers: `list`
 
@@ -148,6 +149,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st customer to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd customer to be `Betsy Crower` and clears all existing tags.
+  ![result for 'edit 2 n/Betsy Crower t/'](images/EditCommand.png)
 
 ### Deleting a customer : `delete`
 
@@ -172,7 +174,7 @@ Format: `find [n/NAME_KEYWORDS...] [a/ADDRESS_KEYWORDS...] [t/TAG_KEYWORDS...]`
 * The search is case-insensitive. e.g `n/hans` will match a customer with the name `Hans`.
 * Only full words will be matched e.g. `n/Han` will not match a customer with the name `Hans`.
 * The order of keywords do not matter. e.g. `n/Hans Bo` is the same as `n/Bo Hans`.
-* The order of filters do not matter. e.g. `n/John t/Tampines` is the same as `t/Tampines n/John`.
+* The order of filters do not matter. e.g. `n/John t/Halal` is the same as `t/Halal n/John`.
 * At least 1 filter with a keyword must be specified.
 * If a filter is not specified or there are no keywords, the filter is *not applied*.
 * Only customers matching *all* filters specified will be displayed.
@@ -216,7 +218,7 @@ Format: `expired bf/DATE`
 
 Examples:
 * `expired bf/2026-12-21` displays all customers whose deliveries have ended before 21 December 2026.
-  ![result for 'expired bf/2026-12-21'](images/findExpiredDelivery.png)
+  ![result for 'expired bf/2026-12-21'](images/ExpiredCommand.png)
 
 ### Scheduling a delivery : `schedule`
 
@@ -266,7 +268,7 @@ Format: `unschedule INDEX`
 Examples:
 * `list` followed by `unschedule 2` deletes the delivery for the 2nd customer on the list.
 * `find n/Bernice` followed by `unschedule 1` deletes the delivery for the 1st customer in the results of the `find` command.
-  ![result for 'unschedule 1' after `find n/Bernice`](images/unscheduleBernice.png)
+  ![result for 'unschedule 1' after `find n/Bernice`](images/UnscheduleCommand.png)
 
 ### Clearing all entries : `clear`
 
