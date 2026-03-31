@@ -500,11 +500,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list customers
-2. ServeMate shows a list of customers
-3. User requests to edit the delivery details of a customer in the list
-4. ServeMate updates the customer's delivery details
-5. ServeMate shows a success message with the updated customer’s delivery details
+1. User requests to list customers.
+2. ServeMate shows a list of customers.
+3. User requests to edit the delivery details of a customer in the list.
+4. ServeMate updates the customer's delivery details.
+5. ServeMate shows a success message with the updated customer’s delivery details.
 
    Use case ends.
 
