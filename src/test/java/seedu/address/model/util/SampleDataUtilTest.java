@@ -2,8 +2,8 @@ package seedu.address.model.util;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.commons.util.DateTimeUtil.convertDayNumberToDayWord;
 import static seedu.address.logic.commands.CommandTestUtil.UNSORTED_DAYS;
+import static seedu.address.logic.commands.CommandTestUtil.UNSORTED_DAYS_WORDS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HALAL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_VEGETARIAN;
 import static seedu.address.model.delivery.DeliveryDay.toDeliveryDay;
@@ -97,8 +97,7 @@ public class SampleDataUtilTest {
     @Test
     public void getDeliveryDaySet_unsortedDeliveryDays_returnsSortedDeliveryDaySet() throws IllegalValueException {
         String[] unsortedDeliveryDays =
-                Arrays.stream(UNSORTED_DAYS.split(""))
-                        .map(day -> convertDayNumberToDayWord(day))
+                Arrays.stream(UNSORTED_DAYS_WORDS)
                         .toArray(String[]::new);
 
         Set<DeliveryDay> actualDeliveryDays = getDeliveryDaySet(unsortedDeliveryDays);
