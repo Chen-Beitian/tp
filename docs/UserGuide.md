@@ -100,7 +100,7 @@ Action | Command Format (with Examples)
   e.g. 9th March 2026 can be written has `2026-03-09`.
 
 * Tags (`t/[TAG]`) are intended for use in placing delivery notes for a particular customer.
-  * ~Tags should only consist of alphanumerical values without whitespaces.
+  * Tags should only consist of alphanumerical values without whitespaces.
   * Suggested usages:
     * Dietary restrictions of the customer (i.e. `t/Vegetarian`).
     * The region where the customer lives (i.e. `t/West`).
