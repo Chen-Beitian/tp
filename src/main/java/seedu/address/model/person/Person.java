@@ -58,7 +58,7 @@ public class Person {
      * @param delivery Delivery of the person. Must not be null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Delivery delivery) {
-        requireAllNonNull(name, phone, email, address, tags);
+        requireAllNonNull(name, phone, email, address, tags, delivery);
         this.name = name;
         this.phone = phone;
         this.email = email;
