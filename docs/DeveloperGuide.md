@@ -189,7 +189,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `FindDeliveryCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram. Additionally, another limitation of PlantUML is that a dotted arrow cannot be shown from the UML note.
+**Note:** The lifeline for `FindDeliveryCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram. Additionally, another limitation of PlantUML is that a dotted line cannot be shown from the UML note.
 </box>
 
 <puml src="diagrams/FindDeliverySequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `find-delivery dt/2026-04-01` Command" />
@@ -223,7 +223,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `ScheduleCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of the diagram. Additionally, another limitation of PlantUML is that a dotted arrow cannot be shown from the UML note.
+**Note:** The lifeline for `ScheduleCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of the diagram. Additionally, another limitation of PlantUML is that a dotted line cannot be shown from the UML note.
 </box>
 
 <puml src="diagrams/ScheduleSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `schedule 1 st/2026-01-01 ed/2026-02-01 tm/14:00 d/123` Command">
@@ -261,7 +261,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `RescheduleCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram. Additionally, another limitation of PlantUML is that a dotted arrow cannot be shown from the UML note.
+**Note:** The lifeline for `RescheduleCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram. Additionally, another limitation of PlantUML is that a dotted line cannot be shown from the UML note.
 </box>
 
 <puml src="diagrams/RescheduleSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `reschedule 1 tm/14:00` Command" />
@@ -299,7 +299,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `UnscheduleCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram. Additionally, another limitation of PlantUML is that a dotted arrow cannot be shown from the UML note.
+**Note:** The lifeline for `UnscheduleCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram. Additionally, another limitation of PlantUML is that a dotted line cannot be shown from the UML note.
 </box>
 
 <puml src="diagrams/UnscheduleSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `unschedule 2` Command" />
