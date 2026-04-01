@@ -55,10 +55,10 @@ public class Person {
      * @param email Email of the person. Must not be null.
      * @param address Address of the person. Must not be null.
      * @param tags Set of tags associated with the person. Must not be null.
-     * @param delivery Delivery of the person. Must not be null.
+     * @param delivery Delivery of the person. Can be null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Delivery delivery) {
-        requireAllNonNull(name, phone, email, address, tags, delivery);
+        requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
