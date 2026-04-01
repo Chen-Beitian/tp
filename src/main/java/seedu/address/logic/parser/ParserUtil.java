@@ -136,7 +136,7 @@ public class ParserUtil {
         return new Tag(trimmedTag);
     }
 
-    //@author Chen-Beitian
+    //@@author Chen-Beitian
     /**
      * Parses a {@code String date} into a {@code LocalDate}.
      * Leading and trailing whitespaces will be trimmed.
@@ -154,7 +154,7 @@ public class ParserUtil {
 
         return parseDeliveryDate(trimmedDate);
     }
-    //@author
+    //@@author
 
     /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
@@ -168,7 +168,7 @@ public class ParserUtil {
         return tagSet;
     }
 
-    //@author BenedTj
+    //@@author BenedTj
     /**
      * Parses {@code String startDate} into a {@code StartDate}.
      * Leading and trailing whitespaces will be trimmed.
@@ -186,7 +186,7 @@ public class ParserUtil {
         return new StartDate(trimmedStartDate);
     }
 
-    //@author MrMarshall12
+    //@@author MrMarshall12
     /**
      * Parses {@code String endDate} into a {@code EndDate}.
      *
@@ -203,7 +203,7 @@ public class ParserUtil {
         return new EndDate(trimmedEndDate);
     }
 
-    //@author BenedTj
+    //@@author BenedTj
     /**
      * Returns the {@code String deliveryTime} into a {@code DeliveryTime}
      * Leading and trailing whitespaces are trimmed.
