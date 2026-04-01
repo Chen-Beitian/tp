@@ -406,29 +406,29 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to add a customer contact with required fields 
-2. ServeMate adds the customer into the customer list 
-3. ServeMate shows a success message with the added customer’s details
+1. User requests to add a customer contact with required fields.
+2. ServeMate adds the customer into the customer list.
+3. ServeMate shows a success message with the added customer’s details.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. Any required field is missing.
+* 1a. ServeMate detects that a required field is missing.
 
-    * 1a1. ServeMate shows an error message describing the correct command format and requests for a new command from the user.
-
-      Use case resumes at step 1.
-
-* 1b. Any parameter value is invalid.
-
-    * 1b1. ServeMate shows an error message describing the violated constraint and requests for a new command from the user.
+    * 1a1. ServeMate shows an error message describing the correct command format.
 
       Use case resumes at step 1.
 
-* 1c. A customer with the same name already exists.
+* 1b. ServeMate detects an invalid field value.
 
-    * 1c1. ServeMate shows an error message indicating that the customer already exists and requests for a new command from the user.
+    * 1b1. ServeMate shows an error message describing the violated constraint.
+
+      Use case resumes at step 1.
+
+* 1c. ServeMate detects that a customer with the same name already exists.
+
+    * 1c1. ServeMate shows an error message indicating that the customer already exists.
 
       Use case resumes at step 1.
 
@@ -436,11 +436,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list customers 
-2. ServeMate shows a list of customers 
-3. User requests to delete a customer in the list 
-4. ServeMate deletes the customer
-5. ServeMate shows a confirmation message with the deleted customer’s details
+1. User requests to list customers.
+2. ServeMate shows a list of customers.
+3. User requests to delete a customer in the list.
+4. ServeMate deletes the customer.
+5. ServeMate shows a success message with the deleted customer’s details.
 
     Use case ends.
 
@@ -450,15 +450,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is not a positive integer.
+* 3a. ServeMate detects that the given index is not a positive integer.
 
-    * 3a1. ServeMate shows an error message describing the correct command format and requests for a new command from the user.
+    * 3a1. ServeMate shows an error message describing the correct command format.
 
       Use case resumes at step 3.
 
-* 3b. The given index is out of range.
+* 3b. ServeMate detects that the given index is out of range.
 
-    * 3b1. ServeMate shows an error message indicating that the provided index is invalid and requests for a new command from the user.
+    * 3b1. ServeMate shows an error message indicating that the provided index is invalid.
 
       Use case resumes at step 3.
 
@@ -466,11 +466,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list customers
-2. ServeMate shows a list of customers
-3. User requests to edit a customer in the list
-4. ServeMate updates the customer record
-5. ServeMate shows a success message with the updated customer’s details
+1. User requests to list customers.
+2. ServeMate shows a list of customers.
+3. User requests to edit a customer in the list.
+4. ServeMate updates the customer record.
+5. ServeMate shows a success message with the updated customer’s details.
 
    Use case ends.
 
@@ -480,33 +480,33 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is not a positive integer.
+* 3a. ServeMate detects that the given index is not a positive integer.
 
-    * 3a1. ServeMate shows an error message describing the correct command format and requests for a new command from the user.
-
-      Use case resumes at step 3.
-
-* 3b. The given index is out of range.
-
-    * 3b1. ServeMate shows an error message indicating that the provided index is invalid and requests for a new command from the user.
+    * 3a1. ServeMate shows an error message describing the correct command format.
 
       Use case resumes at step 3.
 
-* 3c. No fields are specified for editing.
+* 3b. ServeMate detects that the given index is out of range.
 
-    * 3c1. ServeMate shows an error message indicating that at least one field must be provided for editing and requests for a new command from the user.
-
-      Use case resumes at step 3.
-
-* 3d. Any provided field value is invalid.
-
-    * 3d1. ServeMate shows an error message describing the violated constraint and requests for a new command from the user.
+    * 3b1. ServeMate shows an error message indicating that the provided index is invalid.
 
       Use case resumes at step 3.
 
-* 3e. Editing the name causes a duplicate with an existing customer.
+* 3c. ServeMate detects that no fields are specified for editing.
 
-    * 3e1. ServeMate shows an error message indicating that the customer already exists and requests for a new command from the user.
+    * 3c1. ServeMate shows an error message indicating that at least one field must be provided for editing.
+
+      Use case resumes at step 3.
+
+* 3d. ServeMate detects that an invalid field is provided.
+
+    * 3d1. ServeMate shows an error message describing the violated constraint.
+
+      Use case resumes at step 3.
+
+* 3e. ServeMate detects that editing the name causes a duplicate with an existing customer.
+
+    * 3e1. ServeMate shows an error message indicating that the customer already exists.
 
       Use case resumes at step 3.
 
