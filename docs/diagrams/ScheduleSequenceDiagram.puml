@@ -27,7 +27,7 @@ activate ScheduleCommandParser
 ScheduleCommandParser --> AddressBookParser
 deactivate ScheduleCommandParser
 
-AddressBookParser -> ScheduleCommandParser : parse("schedule 1 st/2026-01-01 ed/2026-02-01 tm/14:00 d/123")
+AddressBookParser -> ScheduleCommandParser : parse("1 st/2026-01-01 ed/2026-02-01 tm/14:00 d/123")
 activate ScheduleCommandParser
 
 create ScheduleCommand
