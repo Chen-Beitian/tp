@@ -11,8 +11,8 @@ participant "r:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
-participant "p:Person" as Person MODEL_COLOR
-participant ""
+participant "target:Person" as TargetPerson MODEL_COLOR
+participant "updated:Person" as UpdatedPerson MODEL_COLOR
 participant "m:Model" as Model MODEL_COLOR
 end box
 
@@ -51,11 +51,29 @@ deactivate AddressBookParser
 LogicManager -> UnscheduleCommand : execute(m)
 
 activate UnscheduleCommand
-note right of UnscheduleCommand
-  target: customer to unschedule
-  updated: copy of target without delivery
-end note
+UnscheduleCommand -> TargetPerson : withoutDelivery()
+activate TargetPerson
+
+create UpdatedPerson
+TargetPerson -> UpdatedPerson
+activate UpdatedPerson
+
+UpdatedPerson --> TargetPerson
+deactivate UpdatedPerson
+
+TargetPerson --> UnscheduleCommand : updated
+deactivate TargetPerson
+
 UnscheduleCommand -> Model : setPerson(target, updated)
+activate Model
+
+Model --> UnscheduleCommand
+deactivate Model
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+Model -[hidden]-> UnscheduleCommand
+destroy TargetPerson
+
+UnscheduleCommand -> Model : updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS)
 activate Model
 
 Model --> UnscheduleCommand
