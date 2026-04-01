@@ -473,8 +473,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to view all upcoming deliveries for the day
-2. ServeMate shows a list of all upcoming deliveries for the day
+1. User requests to view all upcoming deliveries for the day.
+2. ServeMate shows a list of all upcoming deliveries for the day.
 
    Use case ends.
 
@@ -490,11 +490,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list customers
-2. ServeMate shows a list of customers
-3. User requests to add a new upcoming delivery for a customer with required fields
-4. ServeMate adds the upcoming delivery to the customer's details
-5. ServeMate shows a success message with the added upcoming delivery's details
+1. User requests to list customers.
+2. ServeMate shows a list of customers.
+3. User requests to add a new upcoming delivery for a customer with required fields.
+4. ServeMate adds the upcoming delivery to the customer's details.
+5. ServeMate shows a success message with the added upcoming delivery's details.
 
    Use case ends.
 
@@ -504,35 +504,35 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is not a positive integer.
+* 3a. ServeMate detects that the given index is not a positive integer.
 
-    * 3a1. ServeMate shows an error message describing the correct command format and requests for a new command from the user.
-
-      Use case resumes at step 3.
-
-* 3b. The given index is out of range.
-
-    * 3b1. ServeMate shows an error message indicating that the provided index is invalid and requests for a new command from the user.
+    * 3a1. ServeMate shows an error message describing the correct command format.
 
       Use case resumes at step 3.
 
-* 3c. Any required field is missing.
+* 3b. ServeMate detects that the given index is out of range.
 
-    * 3c1. ServeMate shows an error message describing the correct command format and requests for a new command from the user.
+    * 3b1. ServeMate shows an error message indicating that the provided index is invalid.
+
+      Use case resumes at step 3.
+
+* 3c. ServeMate detects that there is a required field is missing.
+
+    * 3c1. ServeMate shows an error message describing the correct command format.
 
       Use case resumes from step 3.
 
-* 3d. Any parameter value is invalid.
+* 3d. ServeMate detects that a parameter value is invalid.
 
-    * 3d1. ServeMate shows an error message describing the violated constraint and requests for a new command from the user.
+    * 3d1. ServeMate shows an error message describing the violated constraint.
 
       Use case resumes from step 3.
 
-* 3e. A delivery to the same customer already exists.
+* 3e. ServeMate detects that a delivery to the same customer already exists.
 
-    * 3e1. ServeMate removes the delivery already added to the customer from the customer's details.
+    * 3e1. ServeMate shows an error message describing that the customer already has a delivery scheduled.
 
-      Use case resumes from step 4.
+      Use case resumes from step 3.
 
 **Use case 7: Edit delivery details belonging to a customer**
 
@@ -581,11 +581,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list customers
-2. ServeMate shows a list of customers
-3. User requests to delete a customer's delivery
-4. ServeMate deletes the delivery associated with the specified customer
-5. ServeMate shows a confirmation message that includes the customer's name and details of the deleted delivery
+1. User requests to list customers.
+2. ServeMate shows a list of customers.
+3. User requests to delete a customer's delivery.
+4. ServeMate deletes the delivery associated with the specified customer.
+5. ServeMate shows a success message that includes the customer's name and details of the deleted delivery.
    Use case ends.
 
 **Extensions**
@@ -594,19 +594,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is not a positive integer.
+* 3a. ServeMate detects that the given index is not a positive integer.
 
   * 3a1. ServeMate shows an error message describing the correct command format.
 
     Use case resumes at step 3.
 
-* 3b. The given index is out of range.
+* 3b. ServeMate detects that the given index is out of range.
 
   * 3b1. ServeMate shows an error message describing that the index provided is invalid.
 
     Use case resumes at step 3.
 
-* 3c. The customer at the given index does not have a delivery.
+* 3c. ServeMate detects that the customer at the given index does not have a delivery.
 
   * 3c1. ServeMate shows an error message describing that the specified customer does not have an existing delivery.
 
@@ -616,11 +616,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list customers
-2. ServeMate shows a list of customers
-3. User requests to tag a customer in the list with a delivery note
-4. ServeMate tags the customer in the customer record with the delivery note
-5. ServeMate shows a success message with the updated customer's details including the delivery note
+1. User requests to list customers.
+2. ServeMate shows a list of customers.
+3. User requests to tag a customer in the list with a delivery note.
+4. ServeMate tags the customer in the customer record with the delivery note.
+5. ServeMate shows a success message with the updated customer's details including the delivery note.
 
 **Extensions**
 
@@ -628,21 +628,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is not a positive integer.
+* 3a. ServeMate detects that the given index is not a positive integer.
 
-    * 3a1. ServeMate shows an error message describing the correct command format and requests for a new command from the user.
-
-      Use case resumes at step 3.
-
-* 3b. The given index is out of range.
-
-    * 3b1. ServeMate shows an error message describing that the index value given is invalid and requests for a new command from the user.
+    * 3a1. ServeMate shows an error message describing the correct command format.
 
       Use case resumes at step 3.
 
-* 3c. The given delivery note is empty.
+* 3b. ServeMate detects that the given index is out of range.
 
-    * 3c1. ServeMate shows an error message describing that the delivery note is missing and requests for a new command from the user.
+    * 3b1. ServeMate shows an error message describing that the index value given is invalid.
+
+      Use case resumes at step 3.
+
+* 3c. ServeMate detects that the given delivery note is empty.
+
+    * 3c1. ServeMate shows an error message describing that the delivery note is missing.
   
       Use case resumes at step 3.
 
