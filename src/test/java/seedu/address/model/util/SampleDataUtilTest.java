@@ -2,7 +2,6 @@ package seedu.address.model.util;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.logic.commands.CommandTestUtil.UNSORTED_DAYS;
 import static seedu.address.logic.commands.CommandTestUtil.UNSORTED_DAYS_WORDS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HALAL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_VEGETARIAN;
@@ -19,7 +18,6 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.commons.util.DateTimeUtil;
 import seedu.address.model.delivery.DeliveryDay;
 import seedu.address.model.tag.Tag;
 
@@ -96,15 +94,10 @@ public class SampleDataUtilTest {
 
     @Test
     public void getDeliveryDaySet_unsortedDeliveryDays_returnsSortedDeliveryDaySet() throws IllegalValueException {
-        String[] unsortedDeliveryDays =
-                Arrays.stream(UNSORTED_DAYS_WORDS)
-                        .toArray(String[]::new);
-
-        Set<DeliveryDay> actualDeliveryDays = getDeliveryDaySet(unsortedDeliveryDays);
-        Set<DeliveryDay> expectedDeliveryDays = Arrays.stream(UNSORTED_DAYS.split(""))
-                .sorted()
-                .map(DateTimeUtil::convertDayNumberToDayWord)
+        Set<DeliveryDay> actualDeliveryDays = getDeliveryDaySet(UNSORTED_DAYS_WORDS);
+        Set<DeliveryDay> expectedDeliveryDays = Arrays.stream(UNSORTED_DAYS_WORDS)
                 .map(DeliveryDay::toDeliveryDay)
+                .sorted()
                 .collect(Collectors.toCollection(LinkedHashSet::new));
 
         assertArrayEquals(expectedDeliveryDays.toArray(), actualDeliveryDays.toArray());
