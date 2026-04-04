@@ -16,8 +16,8 @@ import static seedu.address.testutil.DeliveryUtil.generateEndDate;
 import static seedu.address.testutil.TypicalDeliveries.DELIVERY_ALICE;
 import static seedu.address.testutil.TypicalDeliveries.DELIVERY_CARL;
 
-import java.util.LinkedHashSet;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
