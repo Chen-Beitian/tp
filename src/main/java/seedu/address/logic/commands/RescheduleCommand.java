@@ -52,16 +52,16 @@ public class RescheduleCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_NON_EXISTENT_DELIVERY = "This customer does not have an existing delivery";
 
+    private static final Logger logger = LogsCenter.getLogger(RescheduleCommand.class);
     private final Index targetIndex;
     private final RescheduleDeliveryDescriptor rescheduleDeliveryDescriptor;
 
-    private static final Logger logger = LogsCenter.getLogger(RescheduleCommand.class);
 
     /**
      * Creates a RescheduleCommand to edit the details of the delivery assigned to the specified person.
      *
-     * @param targetIndex Index of the person whose delivery is to be edited, expected to be non-null.
-     * @param rescheduleDeliveryDescriptor Details to edit the delivery with, expected to be non-null.
+     * @param targetIndex Index of the person whose delivery is to be edited must not be null.
+     * @param rescheduleDeliveryDescriptor Details to edit the delivery with must not be null.
      */
     public RescheduleCommand(Index targetIndex, RescheduleDeliveryDescriptor rescheduleDeliveryDescriptor) {
         requireNonNull(targetIndex);

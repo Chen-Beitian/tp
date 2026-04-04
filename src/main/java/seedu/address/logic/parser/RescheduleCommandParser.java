@@ -7,13 +7,14 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
+import java.util.logging.Logger;
+
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.RescheduleCommand;
 import seedu.address.logic.commands.RescheduleCommand.RescheduleDeliveryDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-import java.util.logging.Logger;
 
 /**
  * Parses input arguments and creates a new RescheduleCommand object
@@ -26,9 +27,9 @@ public class RescheduleCommandParser implements Parser<RescheduleCommand> {
      * Parses the given {@code String} of arguments in the context of the RescheduleCommand
      * and returns an RescheduleCommand object for execution.
      *
-     * @param args Arguments specified after the command word, expected to be non-null.
+     * @param args Arguments specified after the command word must not be null.
      * @return A RescheduleCommand object representing the command to reschedule the delivery.
-     * @throws ParseException if the user input does not conform to the expected format.
+     * @throws ParseException If the user input does not conform to the expected format.
      */
     public RescheduleCommand parse(String args) throws ParseException {
         requireNonNull(args);

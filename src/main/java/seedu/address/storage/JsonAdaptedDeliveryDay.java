@@ -1,5 +1,7 @@
 package seedu.address.storage;
 
+import static java.util.Objects.requireNonNull;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
@@ -16,11 +18,11 @@ public class JsonAdaptedDeliveryDay {
     /**
      * Constructs a {@code JsonAdaptedDeliveryDay} with the given {@code dayOfWeek}.
      *
-     * @param dayOfWeek The day of the week for the delivery day, expected to be non-null.
+     * @param dayOfWeek The day of the week for the delivery day, must not be null.
      */
     @JsonCreator
     public JsonAdaptedDeliveryDay(String dayOfWeek) {
-        assert dayOfWeek != null;
+        requireNonNull(dayOfWeek);
 
         this.dayOfWeek = dayOfWeek;
     }

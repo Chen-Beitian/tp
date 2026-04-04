@@ -1,5 +1,7 @@
 package seedu.address.storage;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -17,7 +19,6 @@ import seedu.address.model.delivery.DeliveryTime;
 import seedu.address.model.delivery.EndDate;
 import seedu.address.model.delivery.StartDate;
 
-
 /**
  * Jacson-friendly version of {@link Delivery}
  */
@@ -33,8 +34,8 @@ public class JsonAdaptedDelivery {
     /**
      * Constructs a {@code JsonAdaptedDelivery} with the given delivery details.
      *
-     * @param startDate The start date of the delivery, expected to be non-null.
-     * @param endDate The end date of the delivery, expected to be non-null.
+     * @param startDate The start date of the delivery.
+     * @param endDate The end date of the delivery.
      * @param deliveryDays The list of delivery days.
      * @param deliveryTime The delivery time, expected to be non-null.
      */
@@ -42,10 +43,6 @@ public class JsonAdaptedDelivery {
     public JsonAdaptedDelivery(@JsonProperty("startDate") String startDate, @JsonProperty("endDate") String endDate,
                                @JsonProperty("deliveryDays") List<JsonAdaptedDeliveryDay> deliveryDays,
                                @JsonProperty("deliveryTime") String deliveryTime) {
-        assert startDate != null;
-        assert endDate != null;
-        assert deliveryTime != null;
-
         this.startDate = startDate;
         this.endDate = endDate;
         if (deliveryDays != null) {
@@ -57,10 +54,10 @@ public class JsonAdaptedDelivery {
     /**
      * Converts a given {@code Delivery} into this class for Jackson use.
      *
-     * @param source The delivery to be converted, expected to be non-null.
+     * @param source The delivery to be converted must not be null.
      */
     public JsonAdaptedDelivery(Delivery source) {
-        assert source != null;
+        requireNonNull(source);
 
         startDate = source.getStartDate().toString();
         endDate = source.getEndDate().toString();
