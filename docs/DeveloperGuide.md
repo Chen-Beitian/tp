@@ -86,14 +86,14 @@ The sections below give more details of each component.
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
-<puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
-
 <box type="info" seamless>
 
 **Note:** Due to a limitation of PlantUML, there is an overlap in the dependency arrowhead and inheritance triangle originating from `TodayDeliveryCard` to `Model` and `UiPart` respectively. The arrowheads and inheritance triangle should not overlap.
 </box>
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+<puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component" />
+
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `TodayDeliveryPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
 The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
@@ -249,6 +249,8 @@ The following sequence diagram illustrates the interactions within the `Logic` c
         * Pros: Simpler parsing logic.
         * Cons: Less useful for staff who need to view deliveries over a multi-day period.
 
+<br>
+
 ### Schedule delivery
 
 **Objective:** Allows administrative staff to add a delivery to be associated with the specified customer.
@@ -287,6 +289,8 @@ The following sequence diagram illustrates the interactions within the `Logic` c
         * Pros: Fewer commands to learn.
         * Cons: Potential confusion between unintuitive command name (`edit`) for the intended effect (adding a new command), increases parser and validation complexity and weakens separation between customer-date edits and delivery-scheduling operations.
 
+<br>
+
 ### Reschedule delivery
 
 **Objective:** Allows administrative staff to edit a delivery that is associated with the specified customer.
@@ -324,6 +328,8 @@ The following sequence diagram illustrates the interactions within the `Logic` c
     * **Alternative 2:** Extend `edit` to support editing of delivery details alongside customer details.
         * Pros: Fewer commands to learn.
         * Cons: Increases parser and validation complexity and weakens separation between customer-data edits and delivery-scheduling operations.
+
+<br>
 
 ### Unschedule delivery
 
