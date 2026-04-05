@@ -85,9 +85,9 @@ public class DateTimeUtil {
      *
      * @param date The string that is attempted
      *             to be parsed into LocalDate.
+     *             It should not be null or an invalid
+     *             delivery date.
      * @return LocalDate object representing the parsed date.
-     * @throws NullPointerException If the argument passed is null.
-     * @throws DateTimeParseException If the argument passed is an invalid delivery date value.
      */
     public static LocalDate parseDeliveryDate(String date) {
         requireNonNull(date, "delivery date must not be null");
@@ -99,9 +99,8 @@ public class DateTimeUtil {
      * with the format of {@link #FORMATTER_DATE} and returns it.
      *
      * @param date The LocalDate object to be formatted into a string.
+     *             It should not be null.
      * @return String that is the formatted version of the date.
-     * @throws NullPointerException If {@code date} is null.
-     * @throws DateTimeException If an error occurs during formatting.
      */
     public static String formatDeliveryDate(LocalDate date) {
         requireNonNull(date, "delivery date must not be null");
@@ -137,11 +136,10 @@ public class DateTimeUtil {
      * Parses {@code day} into a {@code DayOfWeek} and returns it.
      *
      * @param day The string to be parsed into DayOfWeek.
+     *            It should not be null, an empty string
+     *            or an invalid delivery day word.
      * @return DayOfWeek object representing
      *         the parsed day word value.
-     * @throws NullPointerException If the argument passed is null.
-     * @throws DateTimeParseException If the argument passed is an invalid delivery day word value.
-     * @throws IllegalArgumentException If an empty string is passed as the argument.
      */
     public static DayOfWeek parseDeliveryDayWord(String day) {
         requireNonNull(day, "delivery day word must not be null");
@@ -179,9 +177,8 @@ public class DateTimeUtil {
      * Output examples: Monday, Tuesday, Thursday.
      *
      * @param dayNumber The number representing the day of the week as a string.
+     *                  It should not be null or an invalid delivery day number.
      * @return The full word that represents the day of the week.
-     * @throws NullPointerException If the argument passed is null.
-     * @throws DateTimeParseException If the argument passed is an invalid delivery day number value.
      */
     public static String convertDayNumberToDayWord(String dayNumber) {
         requireNonNull(dayNumber, "delivery day number must not be null");
@@ -194,9 +191,8 @@ public class DateTimeUtil {
      * with the format of {@link #FORMATTER_DAY_NUMBER} and returns it.
      *
      * @param day The DayOfWeek object to be formatted into a string.
+     *            It should not be null.
      * @return String that is the formatted version of the day number value.
-     * @throws NullPointerException If {@code day} is null.
-     * @throws DateTimeException If an error occurs during formatting.
      */
     public static String formatDayNumber(DayOfWeek day) {
         requireNonNull(day, "delivery day must not be null");
@@ -226,10 +222,10 @@ public class DateTimeUtil {
      *
      * @param time The string attempted
      *            to be parsed into LocalTime.
+     *             It should not be null
+     *             or an invalid delivery time.
      * @return LocalTime object representing
      *         the parsed time value.
-     * @throws NullPointerException If the argument passed is null.
-     * @throws DateTimeParseException If the argument passed is an invalid delivery time value.
      */
     public static LocalTime parseDeliveryTime(String time) {
         requireNonNull(time, "delivery time must not be null");
