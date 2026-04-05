@@ -13,7 +13,7 @@ public class TagTest {
         Tag tag = new Tag(validTagName);
         assertEquals(validTagName, tag.tagName);
 
-        // BVA: tag longer than 45 characters
+        // BVA: tag with exactly 45 characters
         String longestValidTagName = "a".repeat(45);
         tag = new Tag(longestValidTagName);
         assertEquals(longestValidTagName, tag.tagName);
