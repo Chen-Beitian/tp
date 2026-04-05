@@ -21,7 +21,7 @@ public class TagTest {
         String nonAlphanumericTagName = "(vegan)";
         assertThrows(IllegalArgumentException.class, () -> new Tag(nonAlphanumericTagName));
 
-        // BVA: tag longer than 47 characters
+        // BVA: tag longer than 46 characters
         String longTagName = "a".repeat(47);
         assertThrows(IllegalArgumentException.class, () -> new Tag(longTagName));
     }
