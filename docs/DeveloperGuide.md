@@ -183,14 +183,18 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+<br>
+
 ### Today's deliveries panel
 
-The sequence diagram below illustrates the interactions between the `Ui`, `Logic` and `Model` components, to create the `TodayDeliveryPanel` when the application is launched.
+**Objective:** Allow administrative staff to view deliveries scheduled for the current day.
+
+#### Implementation details
+The following sequence diagram illustrates the interactions between the `Ui`, `Logic` and `Model` components, to create the `TodayDeliveryPanel` when the application is launched.
 
 <puml src="diagrams/TodayDeliveryPanelSequenceDiagram.puml" alt="Interactions between the `Ui`, `Logic` and `Model` components, to create the `TodayDeliveryPanel` when the application is launched" />
 
-How the `TodayDeliveryPanel` is created:
-
+**Execution flow:**
 1. When `MainWindow` is called upon to fill its inner parts, it gets the list of persons with deliveries scheduled for the current day from the `LogicManager`.
 2. The `LogicManager` in turn calls `ModelManager`, which retrieves and returns the sorted list of today's deliveries. This list is sorted in ascending order of delivery time.
 3. `MainWindow` then gets the current date from the `LogicManager`, which in turn calls `ModelManager` to retrieve and return the current date.
@@ -198,6 +202,16 @@ How the `TodayDeliveryPanel` is created:
    Note that although `fillInnerParts()` is shown only instantiating a `TodayDeliveryPanel` object in the diagram above (for simplicity), in the code `fillInnerParts()` also instantiates other parts of the `Ui` (e.g. `PersonListPanel`).
 5. Finally, the newly created `TodayDeliveryPanel` object is used by `MainWindow` to fill the panel's placeholder, displaying the current date and the sorted list of today's deliveries.<br>
    Note that this step is omitted in the diagram above (for simplicity).
+
+#### Design considerations
+
+1. Whether deliveries displayed on the `TodayDeliveryPanel` should be updated when filtering commands are executed (e.g. `find`, `find-delivery`).
+    * **Chosen:** `TodayDeliveryPanel` will not be updated when filtering commands are executed.
+        * Pros: Allows the user to consistently view all deliveries scheduled for the current day at a glance. Keeps the responsibilities of the `PersonListPanel` and `TodayDeliveryPanel` distinct.
+        * Cons: Users may not be able to directly see how filtered results relate to deliveries scheduled for the current day on the `TodayDeliveryPanel`.
+    * **Alternative:** `TodayDeliveryPanel` will be updated when filtering commands are executed.
+        * Pros: Allows the user flexibility to filter the deliveries displayed on the `TodayDeliveryPanel`.
+        * Cons: May confuse users when results on both the `PersonListPanel` and `TodayDeliveryPanel` change. Reduces the usefulness of the `TodayDeliveryPanel` as a stable, quick overview of deliveries scheduled for the current day.
 
 <br>
 
