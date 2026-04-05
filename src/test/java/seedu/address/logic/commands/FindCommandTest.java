@@ -78,8 +78,7 @@ public class FindCommandTest {
     }
 
     // Below test cases, test non-empty keyword lists, at least once.
-
-    // EP: Only non-empty list: keywordsForName
+    // EP: Non-empty list for: keywordsForName
     @Test
     public void execute_multipleNameKeywords_multiplePersonsFound() {
         PersonMatchesFilterPredicate predicate = new PersonMatchesFilterPredicate(
@@ -94,7 +93,7 @@ public class FindCommandTest {
         assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredPersonList());
     }
 
-    // EP: Only non-empty list: keywordsForAddress
+    // EP: Non-empty list for: keywordsForAddress
     @Test
     public void execute_multipleAddressKeywords_multiplePersonsFound() {
         PersonMatchesFilterPredicate predicate = new PersonMatchesFilterPredicate(
@@ -110,7 +109,7 @@ public class FindCommandTest {
     }
 
     //@@author elijah-ng
-    // EP: Only non-empty list: keywordsForTag
+    // EP: Non-empty list for: keywordsForTag
     @Test
     public void execute_multipleTagKeywords_multiplePersonsFound() {
         PersonMatchesFilterPredicate predicate = new PersonMatchesFilterPredicate(
@@ -126,7 +125,7 @@ public class FindCommandTest {
     }
     //@@author
 
-    // EP: Only non-empty lists: keywordsForTag, keywordsForAddress
+    // EP: Non-empty lists for: keywordsForTag, keywordsForAddress
     @Test
     public void execute_multipleFiltersAndKeywords_personFound() {
         PersonMatchesFilterPredicate predicate = new PersonMatchesFilterPredicate(
