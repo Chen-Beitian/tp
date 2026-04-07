@@ -385,12 +385,12 @@ Examples:
 
 ### Clearing all entries : `clear`
 
-Deletes **all** customer records and their delivery details (if any). This operation **cannot be undone** and your data **cannot be recovered**.
+Deletes **all** customer records and their delivery details (if any).
 
 <box type="warning" light>
 
 **Warning:**
-This action is permanent and cannot be undone. Ensure that you have thoroughly reviewed and backed up any necessary data before proceeding.
+This action **cannot be undone** and results in a **permanent loss of data**. Ensure that you have thoroughly reviewed and backed up any necessary data before proceeding.
 </box>
 
 Format: `clear`
