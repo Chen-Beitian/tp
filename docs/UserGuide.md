@@ -385,7 +385,7 @@ Examples:
 
 ### Clearing all entries : `clear`
 
-Deletes **all** customer records and their delivery details (if any). This operation **cannot be undone** and **data cannot be recovered**.
+Deletes **all** customer records and their delivery details (if any). This operation **cannot be undone** and your data **cannot be recovered**.
 
 <box type="warning" light>
 
