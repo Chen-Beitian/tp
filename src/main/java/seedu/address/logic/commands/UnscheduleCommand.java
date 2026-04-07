@@ -31,6 +31,11 @@ public class UnscheduleCommand extends Command {
 
     private final Index targetIndex;
 
+    /**
+     * Creates an UnscheduleCommand to delete the delivery assigned to the specified person.
+     *
+     * @param targetIndex Index of the person whose delivery is to be deleted. Must not be null.
+     */
     public UnscheduleCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
