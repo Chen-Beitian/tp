@@ -188,7 +188,9 @@ This section describes some noteworthy details on how certain features are imple
 
 <box type="info" light>
 
-**Note:** The UML sequence diagrams and execution flows described in the Implementation section represent the high-level interactions between major components. Internal logic, such as input parsing, argument validation, and error handling, are omitted for brevity but may be found in the codebase.
+**Note:** The UML sequence diagrams and execution flows described in the Implementation section represent the high-level interactions between key components.
+Internal logic such as input parsing and argument validation are omitted for brevity but may be found in the codebase.
+Additionally, some of the method parameters in the UML sequence diagrams have also been simplified (e.g., `personToUnschedule` and `personWithNoDelivery` are referred to as `target` and `updated` respectively for `unschedule` command).
 </box>
 
 ### Today's deliveries panel
