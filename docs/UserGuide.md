@@ -85,19 +85,20 @@ Meet Mdm Tan, an experienced administrative staff at a Tingkat catering business
 **Note:** This tutorial uses the sample data that comes preloaded with ServeMate so that you can practice right away.
 Please note that your screen might look different from the screenshots below, because what you see for the **delivery panel** on the right depends on your computer's date.
 </box>
-<br><br>
+<br>
 
 ### Viewing all customer records
 Before the day starts, Mdm Tan wants to check the full list of customers.
-<br><br>
+<br>
 
 She types the `list` command into the command box at the top, and the customer panel on the left is updated:
 <br>![Tutorial for List Command](images/Tutorial-ListCommand.png)
-<br><br><br>
+<br><br>
 
 ### Welcoming a new customer
 The phone rings. It's Bryan Wong from Paya Lebar who wants to start a Tingkat service for his family. He requests for his meals to not contain eggs.
-<br><br>
+<br>
+
 As Bryan provides his contact details, Mdm Tan quickly types the `add` command:
 ```text
 add n/Bryan Wong p/86422468 a/25 Paya Lebar Crescent, S536050 e/wongbryan87@gmail.com t/NoEgg
@@ -122,21 +123,20 @@ schedule 7 st/2026-04-07 ed/2026-06-07 d/1234567 tm/17:00
 
 Since Bryan’s Tingkat plan starts today, his delivery will also be added to the delivery panel on the right:
 <br>![Tutorial for Schedule Command](images/Tutorial-ScheduleCommand.png)
-<br><br><br>
+<br><br>
 
 ### Handling customer feedback
 An hour later, Mdm Tan receives a Whatsapp message. This time, it is Irfan from Tampines who complains about yesterday's meal being too oily.
-<br><br>
+<br>
 
 Instead of slowly scrolling through the entire list of customers, Mdm Tan uses the `find` command to locate Irfan's contact:
 ```text
 find n/Irfan a/Tampines
 ```
-<br>
 
 The customer panel will display a filtered list containing all customers with the name `Irfan` and address in `Tampines`:
 <br>![Tutorial for Find Command](images/Tutorial-FindCommand.png)
-<br><br>
+<br>
 
 Next, Mdm Tan uses the `edit` command to update Irfan's tags to reflect his preference for less oily food:
 ```text
@@ -158,7 +158,7 @@ Mdm Tan checks that Irfan's record is updated correctly:
 
 **Congrats!** You are now ready to use ServeMate for your daily tasks. 
 </box>
-<br><br>
+<br>
 
 ### What's next
 
@@ -485,7 +485,7 @@ If you like to find customers matching any of the filters (e.g. find all custome
 
 ## Known issues
 
-1. **Application window opens off-screen**<br>
+1. **Application window opens off-screen**  
    If you used ServeMate on a second screen and later switched to using a single screen, the application window may open off-screen for future start-ups.
    * **Solution**: Delete the `preferences.json` file located in the same folder as `ServeMate.jar` before restarting ServeMate.
 <box type="warning" light>
@@ -494,11 +494,11 @@ If you like to find customers matching any of the filters (e.g. find all custome
 The `preferences.json` file saves configuration settings used by ServeMate. If you choose to edit the file directly, do note that certain edits can cause ServeMate to behave in unexpected ways. Therefore, edit the file only if you are confident that you can update it correctly.
 </box>
 
-2. **Help window does not appear**<br>
+2. **Help window does not appear**  
    If you minimize the Help Window and then try to open it again (using the `help` command, `F1` key, or `Help` menu), ServeMate will not open a second Help Window.
    * **Solution**: Look for the minimized Help Window in your computer's taskbar and click on it to restore it back to the screen.
 
-3. **Screen lags when scrolling quickly**<br>
+3. **Screen lags when scrolling quickly**  
    If you quickly scroll through a very long list of customers, you might notice that ServeMate starts to slow down.
    * **Solution**: Scroll at a slower speed to allow the screen to update more smoothly.
 <box type="tip" light>
