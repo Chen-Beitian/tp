@@ -870,13 +870,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 1.
 
-* 1b. ServeMate detects that the provided date is invalid.
+  * 1b. ServeMate detects that one or more provided dates are invalid.
 
-    * 1b1. ServeMate displays an error message describing that the date given is invalid.
+    * 1b1. ServeMate displays an error message describing that one or more dates given are invalid.
 
       Use case resumes at step 1.
 
-* 1c. ServeMate detects that the start date is after the end date.
+* 1c. ServeMate detects that, for a date range search, the start date is after the end date.
 
     * 1c1. ServeMate displays an error message indicating that the start date must not be after the end date.
 
