@@ -18,10 +18,9 @@ public class DateTimeUtilTest {
         // EP: null delivery date -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> DateTimeUtil.isValidDeliveryDate(null));
 
-        // EP: empty string -> returns false
-        assertFalse(DateTimeUtil.isValidDeliveryDate(""));
-
         // EP: string does not contain complete date -> returns false
+        // Boundary value: empty string
+        assertFalse(DateTimeUtil.isValidDeliveryDate(""));
         assertFalse(DateTimeUtil.isValidDeliveryDate(" ")); // spaces only
         assertFalse(DateTimeUtil.isValidDeliveryDate("12")); // only date number
         assertFalse(DateTimeUtil.isValidDeliveryDate("2012")); // only year
@@ -57,7 +56,8 @@ public class DateTimeUtilTest {
         assertThrows(NullPointerException.class, () -> DateTimeUtil.parseDeliveryDate(null));
 
         // EP: invalid delivery dates -> throws DateTimeParseException
-        assertThrows(DateTimeParseException.class, () -> DateTimeUtil.parseDeliveryDate("")); // empty string
+        // Boundary value: empty string
+        assertThrows(DateTimeParseException.class, () -> DateTimeUtil.parseDeliveryDate(""));
         assertThrows(DateTimeParseException.class, () -> DateTimeUtil.parseDeliveryDate(" ")); // spaces only
         assertThrows(DateTimeParseException.class, () -> DateTimeUtil.parseDeliveryDate("12")); // only date number
         assertThrows(DateTimeParseException.class, () -> DateTimeUtil.parseDeliveryDate("2012")); // only year
@@ -90,10 +90,9 @@ public class DateTimeUtilTest {
         // EP: null day -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> DateTimeUtil.isValidDeliveryDayWord(null));
 
-        // EP: empty string -> returns false
-        assertFalse(DateTimeUtil.isValidDeliveryDayWord(""));
-
         // EP: string without day -> returns false
+        // Boundary value: empty string
+        assertFalse(DateTimeUtil.isValidDeliveryDayWord(""));
         assertFalse(DateTimeUtil.isValidDeliveryDayWord(" "));
 
         // EP: string with incorrect day format -> returns false
@@ -111,10 +110,10 @@ public class DateTimeUtilTest {
         // EP: null day -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> DateTimeUtil.parseDeliveryDayWord(null));
 
-        // EP: empty string -> throws IllegalArgumentException
-        assertThrows(IllegalArgumentException.class, () -> DateTimeUtil.parseDeliveryDayWord(""));
 
         // EP: string without day -> throws DateTimeParseException
+        // Boundary value: empty string
+        assertThrows(IllegalArgumentException.class, () -> DateTimeUtil.parseDeliveryDayWord(""));
         assertThrows(DateTimeParseException.class, () -> DateTimeUtil.parseDeliveryDayWord(" "));
 
         // EP: string with incorrect day format -> throws DateTimeParseException
@@ -133,10 +132,9 @@ public class DateTimeUtilTest {
         // EP: null day number -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> DateTimeUtil.isValidDeliveryDayNumber(null));
 
-        // EP: empty string -> returns false
-        assertFalse(DateTimeUtil.isValidDeliveryDayNumber(""));
-
         // EP: string without day -> returns false
+        // Boundary value: empty string
+        assertFalse(DateTimeUtil.isValidDeliveryDayNumber(""));
         assertFalse(DateTimeUtil.isValidDeliveryDayNumber(" "));
 
         // EP: string with no number -> returns false
@@ -168,10 +166,9 @@ public class DateTimeUtilTest {
         // EP: null day number -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> DateTimeUtil.convertDayNumberToDayWord(null));
 
-        // EP: empty string -> throws DateTimeParseException
-        assertThrows(DateTimeParseException.class, () -> DateTimeUtil.convertDayNumberToDayWord(""));
-
         // EP: string without day -> throws DateTimeParseException
+        // Boundary value: empty string
+        assertThrows(DateTimeParseException.class, () -> DateTimeUtil.convertDayNumberToDayWord(""));
         assertThrows(DateTimeParseException.class, () -> DateTimeUtil.convertDayNumberToDayWord(" "));
 
         // EP: string with no number -> throws DateTimeParseException
@@ -207,10 +204,9 @@ public class DateTimeUtilTest {
         // EP: null time -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> DateTimeUtil.isValidDeliveryTime(null));
 
-        // EP: empty string -> returns false
-        assertFalse(DateTimeUtil.isValidDeliveryTime(""));
-
         // EP: string with no time -> returns false
+        // Boundary value: empty string
+        assertFalse(DateTimeUtil.isValidDeliveryTime(""));
         assertFalse(DateTimeUtil.isValidDeliveryTime(" ")); // spaces only
         assertFalse(DateTimeUtil.isValidDeliveryTime("12")); // only one number
         assertFalse(DateTimeUtil.isValidDeliveryTime("01-12")); // does not contain year
@@ -226,10 +222,9 @@ public class DateTimeUtilTest {
         // EP: null time -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> DateTimeUtil.parseDeliveryTime(null));
 
-        // EP: empty string -> throws DateTimeParseException
-        assertThrows(DateTimeParseException.class, () -> DateTimeUtil.parseDeliveryTime(""));
-
         // EP: string with no time -> throws DateTimeParseException
+        // Boundary value: empty string
+        assertThrows(DateTimeParseException.class, () -> DateTimeUtil.parseDeliveryTime(""));
         assertThrows(DateTimeParseException.class, () -> DateTimeUtil.parseDeliveryTime(" ")); // spaces only
         assertThrows(DateTimeParseException.class, () -> DateTimeUtil.parseDeliveryTime("12")); // only one number
         assertThrows(DateTimeParseException.class, () ->

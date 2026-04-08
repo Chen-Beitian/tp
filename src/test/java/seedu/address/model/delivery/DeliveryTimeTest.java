@@ -27,10 +27,9 @@ public class DeliveryTimeTest {
         // EP: null time -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> DeliveryTime.isValidDeliveryTime(null));
 
-        // EP: empty string -> returns false
-        assertFalse(DeliveryTime.isValidDeliveryTime(""));
-
         // EP: string with no time -> returns false
+        // Boundary value: empty string
+        assertFalse(DeliveryTime.isValidDeliveryTime(""));
         assertFalse(DeliveryTime.isValidDeliveryTime(" ")); // spaces only
         assertFalse(DeliveryTime.isValidDeliveryTime("12")); // only one number
         assertFalse(DeliveryTime.isValidDeliveryTime("01-12")); // does not contain year

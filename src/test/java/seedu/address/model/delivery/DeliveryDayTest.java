@@ -28,10 +28,9 @@ public class DeliveryDayTest {
         // EP: null day -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> DeliveryDay.isValidDeliveryDay(null));
 
-        // EP: empty string -> returns false
-        assertFalse(DeliveryDay.isValidDeliveryDay(""));
-
         // EP: string with no day -> returns false
+        // Boundary value: empty string
+        assertFalse(DeliveryDay.isValidDeliveryDay(""));
         assertFalse(DeliveryDay.isValidDeliveryDay(" "));
 
         // EP: string with incorrect day format -> returns false

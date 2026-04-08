@@ -26,10 +26,9 @@ public class StartDateTest {
         // EP: null start date -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> StartDate.isValidStartDate(null));
 
-        // EP: empty string -> returns false
-        assertFalse(StartDate.isValidStartDate(""));
-
         // EP: string with no date -> returns false
+        // Boundary value: empty string
+        assertFalse(StartDate.isValidStartDate(""));
         assertFalse(StartDate.isValidStartDate(" ")); // spaces only
         assertFalse(StartDate.isValidStartDate("12")); // only date number
         assertFalse(StartDate.isValidStartDate("2012")); // only year

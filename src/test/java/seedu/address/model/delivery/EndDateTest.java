@@ -26,10 +26,9 @@ public class EndDateTest {
         // EP: null end date -> throws NullPointerException
         assertThrows(NullPointerException.class, () -> EndDate.isValidEndDate(null));
 
-        // EP: empty string -> returns false
-        assertFalse(EndDate.isValidEndDate(""));
-
         // EP: string with no date -> returns false
+        // Boundary value: empty string
+        assertFalse(EndDate.isValidEndDate(""));
         assertFalse(EndDate.isValidEndDate(" ")); // spaces only
         assertFalse(EndDate.isValidEndDate("12")); // only date number
         assertFalse(EndDate.isValidEndDate("2012")); // only year
