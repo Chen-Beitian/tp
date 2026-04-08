@@ -183,7 +183,7 @@ Format: `delete INDEX`
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd customer on the list.
-* `find n/Betsy` followed by `delete 1` deletes the 1st customer in the results of the `find` command.
+* `find n/Betsy` displays the list of customers with name matching `Betsy`, followed by `delete 1` which deletes the 1st customer in the results of that `find` command.
 
 <br>
 
@@ -208,8 +208,8 @@ Examples:
 * `find t/Vegetarian` displays all customers tagged with dietary restriction `Vegetarian`.
 * `find n/Alex t/Vegetarian` displays customers whose name is `Alex` *and* tagged with dietary restriction `Vegetarian`.
 * `find n/Bernice a/Yishun Jurong` displays customers whose name is `Bernice` *and* with address containing `Yishun` or `Jurong`.
-* `find n/Alex Bernice a/Yishun t/Vegetarian` displays customers whose name is `Alex` or `Bernice`, with address containing `Yishun` *and* tagged with dietary restriction `Vegetarian`.<br>
-  <img src="images/findAlexBerniceResult.png" alt="result for 'find n/Alex Bernice a/Yishun t/Vegetarian'" width="500"/>
+* `find n/Alex Roy a/Street t/Vegetarian` displays customers whose name is `Alex` or `Roy`, with address containing `Street` *and* tagged with dietary restriction `Vegetarian`.<br>
+  <img src="images/FindCommand.png" alt="result for `find n/Alex Roy a/Street t/Vegetarian`" width="350"/>
 
 <br>
 
