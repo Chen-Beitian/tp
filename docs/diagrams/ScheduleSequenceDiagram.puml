@@ -51,7 +51,7 @@ deactivate AddressBookParser
 LogicManager -> ScheduleCommand : execute(m)
 
 activate ScheduleCommand
-ScheduleCommand -> TargetPerson : withoutDelivery()
+ScheduleCommand -> TargetPerson : addDeliveryToPerson(target, scheduledDelivery)
 activate TargetPerson
 
 create UpdatedPerson
