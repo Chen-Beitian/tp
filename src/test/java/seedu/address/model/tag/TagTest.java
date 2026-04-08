@@ -13,8 +13,8 @@ public class TagTest {
         Tag tag = new Tag(validTagName);
         assertEquals(validTagName, tag.tagName);
 
-        // BVA: tag with exactly 45 characters
-        String longestValidTagName = "a".repeat(45);
+        // BVA: tag with exactly 25 characters
+        String longestValidTagName = "a".repeat(25);
         tag = new Tag(longestValidTagName);
         assertEquals(longestValidTagName, tag.tagName);
     }
@@ -34,8 +34,8 @@ public class TagTest {
         String nonAlphanumericTagName = "(vegan)";
         assertThrows(IllegalArgumentException.class, () -> new Tag(nonAlphanumericTagName));
 
-        // BVA: tag longer than 45 characters
-        String longTagName = "a".repeat(46);
+        // BVA: tag longer than 25 characters
+        String longTagName = "a".repeat(26);
         assertThrows(IllegalArgumentException.class, () -> new Tag(longTagName));
     }
 
