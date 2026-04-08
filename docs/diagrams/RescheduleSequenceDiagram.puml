@@ -11,7 +11,9 @@ participant "r:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
-participant "rescheduledPerson:Person" as UpdatedPerson MODEL_COLOR
+participant "rd:RescheduleDeliveryDescriptor" as RescheduleDescriptor MODEL_COLOR
+participant "delivery:Delivery" as Delivery MODEL_COLOR
+participant "updated:Person" as UpdatedPerson MODEL_COLOR
 participant "m:Model" as Model MODEL_COLOR
 end box
 
@@ -31,8 +33,14 @@ deactivate RescheduleCommandParser
 AddressBookParser -> RescheduleCommandParser : parse("1 tm/14:00")
 activate RescheduleCommandParser
 
+create RescheduleDescriptor
+RescheduleCommandParser -> RescheduleDescriptor
+activate RescheduleDescriptor
+
+RescheduleDescriptor --> RescheduleCommandParser
+deactivate RescheduleDescriptor
 create RescheduleCommand
-RescheduleCommandParser -> RescheduleCommand
+RescheduleCommandParser -> RescheduleCommand: RescheduleCommand(index, rd)
 activate RescheduleCommand
 
 RescheduleCommand --> RescheduleCommandParser :
@@ -50,8 +58,19 @@ deactivate AddressBookParser
 LogicManager -> RescheduleCommand : execute(m)
 
 activate RescheduleCommand
-RescheduleCommand -> RescheduleCommand: createRescheduledPerson(personToReschedule, rescheduleDeliveryDescriptor)
+RescheduleCommand -> RescheduleCommand: createRescheduledPerson(target, rd)
 activate RescheduleCommand
+
+RescheduleCommand -> RescheduleCommand: createRescheduledDelivery(target, rd)
+activate RescheduleCommand
+create Delivery
+RescheduleCommand -> Delivery
+activate Delivery
+Delivery --> RescheduleCommand
+deactivate Delivery
+
+RescheduleCommand --> RescheduleCommand: delivery
+deactivate RescheduleCommand
 
 create UpdatedPerson
 RescheduleCommand -> UpdatedPerson
@@ -59,10 +78,10 @@ activate UpdatedPerson
 UpdatedPerson --> RescheduleCommand
 deactivate UpdatedPerson
 
-RescheduleCommand --> RescheduleCommand: rescheduledPerson
+RescheduleCommand --> RescheduleCommand: updated
 deactivate RescheduleCommand
 
-RescheduleCommand -> Model : setPerson(personToReschedule, rescheduledPerson)
+RescheduleCommand -> Model : setPerson(target, updated)
 activate Model
 
 Model --> RescheduleCommand
