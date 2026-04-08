@@ -183,7 +183,7 @@ Format: `delete INDEX`
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd customer on the list.
-* `find n/Betsy` displays the list of customers with name matching `Betsy`, followed by `delete 1` which deletes the 1st customer in the results of that `find` command.
+* `find n/Alex` displays the list of customers whose names contain `Alex`, followed by `delete 1` which deletes the 1st customer in the results of that `find` command.
 
 <br>
 
@@ -193,22 +193,22 @@ Find customers whose attributes (name, address, tag) match at least 1 of the key
 
 Format: `find [n/NAME_KEYWORDS...] [a/ADDRESS_KEYWORDS...] [t/TAG_KEYWORDS...]`
 
-* The search is case-insensitive. e.g `n/hans` will match a customer with the name `Hans`.
+* The search is case-insensitive. e.g `n/hans` will match a customer whose name contains `Hans`.
 * Only full words will be matched e.g. `n/Han` will not match a customer with the name `Hans`.
-* The order of keywords do not matter. e.g. `n/Hans Bo` is the same as `n/Bo Hans`.
+* The order of keywords does not matter. e.g. `n/Hans Bo` is the same as `n/Bo Hans`.
 * The order of filters do not matter. e.g. `n/John t/Halal` is the same as `t/Halal n/John`.
 * At least 1 filter with a keyword must be specified.
 * If a filter is not specified or there are no keywords, the filter is *not applied*.
 * Only customers matching *all* filters specified will be displayed.
 * For each filter, multiple keywords (each separated by a space) can be specified. A customer matches the filter if *at least one* keyword matches (i.e. `OR` search).
-  e.g. `n/John Lily t/Vegetarian` will return all your customers whose name is `John` or `Lily`, and tagged with dietary restriction `Vegetarian`.
+  e.g. `n/John Lily t/Vegetarian` will return all your customers whose names contain `John` or `Lily`, and tagged with dietary restriction `Vegetarian`.
 
 Examples:
 * `find a/Jurong` displays all customers with address containing `Jurong`.
 * `find t/Vegetarian` displays all customers tagged with dietary restriction `Vegetarian`.
-* `find n/Alex t/Vegetarian` displays customers whose name is `Alex` *and* tagged with dietary restriction `Vegetarian`.
-* `find n/Bernice a/Yishun Jurong` displays customers whose name is `Bernice` *and* with address containing `Yishun` or `Jurong`.
-* `find n/Alex Roy a/Street t/Vegetarian` displays customers whose name is `Alex` or `Roy`, with address containing `Street` *and* tagged with dietary restriction `Vegetarian`.<br>
+* `find n/Alex t/Vegetarian` displays customers whose names contain `Alex` *and* tagged with dietary restriction `Vegetarian`.
+* `find n/Bernice a/Yishun Jurong` displays customers whose names contain `Bernice` *and* with address containing `Yishun` or `Jurong`.
+* `find n/Alex Roy a/Street t/Vegetarian` displays customers whose names contain `Alex` or `Roy`, with address containing `Street` *and* tagged with dietary restriction `Vegetarian`.<br>
   <img src="images/FindCommand.png" alt="result for `find n/Alex Roy a/Street t/Vegetarian`" width="350"/>
 
 <br>
