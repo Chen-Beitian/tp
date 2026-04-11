@@ -87,10 +87,8 @@ deactivate CommandResult
 
 UnscheduleCommand --> LogicManager : r
 deactivate UnscheduleCommand
-'Hidden arrow to position the destroy marker below the end of the activation bar.
-UnscheduleCommand -[hidden]-> LogicManager
-destroy UnscheduleCommand
 
 [<--LogicManager
 deactivate LogicManager
+destroy UnscheduleCommand
 @enduml

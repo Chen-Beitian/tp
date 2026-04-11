@@ -73,10 +73,8 @@ deactivate CommandResult
 
 ExpiredCommand --> LogicManager : r
 deactivate ExpiredCommand
-'Hidden arrow to position the destroy marker below the end of the activation bar.
-ExpiredCommand -[hidden]-> LogicManager
-destroy ExpiredCommand
 
 [<--LogicManager
 deactivate LogicManager
+destroy ExpiredCommand
 @enduml
