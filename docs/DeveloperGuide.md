@@ -392,7 +392,7 @@ The following sequence diagram illustrates the interactions within the `Logic` c
 
 <box type="info">
 
-**Note:** The lifelines for `UnscheduleCommandParser` and `UnscheduleCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifelines continues till the end of diagram.
+**Note:** The lifelines for `UnscheduleCommandParser`, `UnscheduleCommand`, and `target` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifelines continues till the end of diagram.
 </box>
 
 <puml src="diagrams/UnscheduleSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `unschedule 2` Command" />
