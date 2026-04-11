@@ -821,6 +821,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 3b1. ServeMate shows an error message describing that the index value given is invalid.
 
+      Use case resumes at step 3.
 
 * 3c. ServeMate detects that the given delivery note is empty.
 
