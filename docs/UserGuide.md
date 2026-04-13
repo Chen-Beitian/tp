@@ -388,6 +388,8 @@ Format: `reschedule INDEX [st/START_DATE] [ed/END_DATE] [tm/DELIVERY_TIME] [d/DE
 * The specified customer must have an existing delivery.
 * The index refers to the index number shown in the displayed customer panel.
 * The index **must be a positive integer** 1, 2, 3, …​
+* `DELIVERY_DAYS` must be a set of numbers **within the range of 1-7 inclusive** without whitespaces where 1 = Monday, 2 = Tuesday, …​, 7 = Sunday.
+* `DELIVERY_TIME` should be in the 24-hour format and be between `00:00` and `23:59`.
 
 Examples:
 * `reschedule 1 ed/2026-02-02 tm/12:45` Edits the delivery end date and delivery time for the 1st customer to be `2026-02-02` and `12:45` respectively.
