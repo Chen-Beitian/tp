@@ -1045,13 +1045,13 @@ testers are expected to do more *exploratory* testing.
 
 3. Invalid `find-delivery` commands.
     1. Test case: `find-delivery dt/2026-04-01 st/2026-04-01 ed/2026-04-30`<br>
-       Expected: An error message for the command format is shown.
+       Expected: `find-delivery` command is not executed and the list of customers remains the same. An error message for the command format is shown.
     2. Test case: `find-delivery st/2026-10-30 ed/2026-10-15`<br>
-       Expected: An error message indicating that the start date must not be after the end date is shown.
+       Expected: `find-delivery` command is not executed and the list of customers remains the same. An error message indicating that the start date must not be after the end date is shown.
     3. Test case: `find-delivery st/2026-10-15`<br>
-       Expected: An error message for the command format is shown.
+       Expected: `find-delivery` command is not executed and the list of customers remains the same. An error message for the command format is shown.
     4. Other incorrect commands to try: `find-delivery dt/2026-13-01` (invalid date), `find-delivery` (no arguments)<br>
-       Expected: An error message for the date format or command format is shown respectively.
+       Expected: `find-delivery` command is not executed and the list of customers remains the same. An error message for the date format or command format is shown respectively.
 
 ### Finding customers with expired delivery: `expired`
 
@@ -1064,7 +1064,7 @@ testers are expected to do more *exploratory* testing.
     4. Test case: `expired bf/2027-02-10`<br>
        Expected: Only customers whose delivery end date is strictly before 2027-02-10 are listed (if any).
     5. Other incorrect commands to try: `expired bf/2026-13-01` (invalid date), `expired` (no arguments)<br>
-       Expected: An error message for the date format or command format is shown respectively.
+       Expected: `expired` command is not executed and the list of customers remains the same. An error message for the date format or command format is shown respectively.
 
 ### Scheduling a delivery: `schedule`
 
