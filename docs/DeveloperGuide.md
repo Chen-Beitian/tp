@@ -1001,7 +1001,7 @@ testers are expected to do more *exploratory* testing.
     2. Double-click the jar file.<br>
        Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-1. Saving window preferences.
+2. Saving window preferences.
     1. Resize the window to an optimum size. Move the window to a different location. Close the window.
     2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
@@ -1017,7 +1017,7 @@ testers are expected to do more *exploratory* testing.
     4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.
 
-1. Deleting a customer who has a delivery.
+2. Deleting a customer who has a delivery.
     1. Prerequisites: Bernice Yu must be present in the customer list with a delivery (she has one in the default sample data). Run `find n/Bernice` — she should appear at index 1.
     2. Test case: `find n/Bernice`, then `delete 1`<br>
        Expected: Bernice Yu is deleted from the list. Run `find-delivery st/2026-08-09 ed/2027-02-09` — Bernice Yu should no longer appear, confirming that her associated delivery was also removed.
@@ -1028,7 +1028,7 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: Launch the app with the default sample data.
     2. Note the date shown in the delivery panel header and verify it matches your computer's current date. To verify the panel contents, run `find-delivery dt/DATE` replacing `DATE` with the date shown in the panel — the customers listed in the delivery panel should match those returned by the command.
 
-1. Verifying that the panel is unaffected by filter commands.
+2. Verifying that the panel is unaffected by filter commands.
     1. Prerequisites: Note the current contents of the delivery panel.
     2. Test case: `find n/David`<br>
        Expected: The customer panel shows filtered results. The delivery panel remains unchanged.
@@ -1054,7 +1054,7 @@ The following test cases use the default sample data. Customers with a delivery 
     4. Test case: `find-delivery dt/2024-12-31`<br>
        Expected: No customers shown. (All delivery periods start after this date.)
 
-1. Finding customers by delivery date range.
+2. Finding customers by delivery date range.
     1. Prerequisites: List all customers using the `list` command.
     2. Test case: `find-delivery st/2026-09-20 ed/2026-09-20`<br>
        Expected: Alex Yeoh and Roy Balakrishnan are shown. (2026-09-20 is a Sunday; verifies that the range start date is inclusive and that only customers with Sunday as a delivery day are shown.)
@@ -1063,7 +1063,7 @@ The following test cases use the default sample data. Customers with a delivery 
     4. Test case: `find-delivery st/2026-09-15 ed/2026-09-19`<br>
        Expected: Bernice Yu, Irfan Ibrahim, and Roy Balakrishnan are shown. (Alex Yeoh's delivery starts on 2026-09-20, which is outside this range.)
 
-1. Invalid `find-delivery` commands.
+3. Invalid `find-delivery` commands.
     1. Test case: `find-delivery dt/2026-04-01 st/2026-04-01 ed/2026-04-30`<br>
        Expected: Error message shown. (`dt/` cannot be used together with `st/` and `ed/`.)
     2. Test case: `find-delivery st/2026-10-30 ed/2026-10-15`<br>
@@ -1093,7 +1093,7 @@ The following test cases use the default sample data. Customers with a delivery 
     2. Test case: `find n/Charlotte`, then `schedule 1 st/2026-05-01 ed/2026-05-31 tm/12:00 d/135`<br>
        Expected: Delivery details appear on Charlotte Oliveiro's card. Success message is shown.
 
-1. Scheduling a delivery for a customer who already has one.
+2. Scheduling a delivery for a customer who already has one.
     1. Prerequisites: Charlotte Oliveiro must have an existing delivery. If not yet set up, first complete the previous test case.
     2. Test case: `find n/Charlotte`, then `schedule 1 st/2026-06-01 ed/2026-06-30 tm/14:00 d/2`<br>
        Expected: No delivery added. Error message shown.
@@ -1107,7 +1107,7 @@ The following test cases use the default sample data. Customers with a delivery 
     2. Test case: `find n/Charlotte`, then `reschedule 1 ed/2026-06-30`<br>
        Expected: The end date of the delivery is updated to 2026-06-30. Success message is shown.
 
-1. Rescheduling the delivery of a customer without one.
+2. Rescheduling the delivery of a customer without one.
     1. Prerequisites: David Li must be present in the customer list without a delivery (he has none in the default sample data). Run `find n/David Li` — he should appear at index 1 with no delivery information on his card.
     2. Test case: `find n/David Li`, then `reschedule 1 ed/2026-06-30`<br>
        Expected: No changes made. Error message shown.
@@ -1121,7 +1121,7 @@ The following test cases use the default sample data. Customers with a delivery 
     2. Test case: `find n/Charlotte`, then `unschedule 1`<br>
        Expected: Delivery details are removed from Charlotte Oliveiro's card. Success message is shown.
 
-1. Unscheduling the delivery of a customer without one.
+2. Unscheduling the delivery of a customer without one.
     1. Prerequisites: Charlotte Oliveiro must not have a delivery. If not yet set up, first complete the previous test case.
     2. Test case: `find n/Charlotte`, then `unschedule 1`<br>
        Expected: No changes made. Error message shown.
