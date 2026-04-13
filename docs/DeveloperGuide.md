@@ -1000,6 +1000,38 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+### Finding customers by attributes (name, address, tag)
+
+1. Finding customers by name.
+
+    1. Prerequisites: List all customers using the `list` command. There are multiple customers in the list.
+
+    2. Test case: `find n/alex`<br>
+       Expected: Only customers whose name contains `alex` (case-insensitive) are listed (if any).
+
+    3. Test case: `find n/al-ex`<br>
+       Expected: `find` command is not executed and the list of customers remains the same. An error message for the name keywords format is shown.
+   
+    4. Test case: `find n/`<br>
+      Expected: `find` command is not executed and the list of customers remains the same. An error message for the command format is shown.
+
+2. Finding customers by name and address.
+
+    1. Prerequisites: List all customers using the `list` command. There are multiple customers in the list.
+
+    2. Test case: `find n/alex a/geylang`<br>
+       Expected: Only customers whose name contains `alex` and address contains `geylang` (both case-insensitive) are listed (if any).
+
+3. Finding customers by name, address and tag.
+
+    1. Prerequisites: List all customers using the `list` command. There are multiple customers in the list.
+
+    2. Test case: `find n/alex a/geylang t/vegetarian`<br>
+       Expected: Only customers whose name contains `alex`, address contains `geylang` and tagged with `vegetarian` (all three are case-insensitive) are listed (if any).
+   
+    3. Test case: `find n/alex a/geylang t/vege-tarian`<br>
+      Expected: `find` command is not executed and the list of customers remains the same. An error message for the tag keywords format is shown.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Appendix: Planned enhancements
