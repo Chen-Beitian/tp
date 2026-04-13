@@ -516,3 +516,7 @@ Use the `find` command to search for the customer you want for faster navigation
    <br> Examples of erroneous dates:
   * Wrong date: `2026-02-29` is a date that does not exist since 2026 is not a leap year.
   * Wrong format: `10000-12-03` does not follow the expected format `yyyy-MM-dd`.
+6. **Increase specificity of error message for time parsing**: If you entered either a time string with an invalid format or an invalid time, ServeMate will specify which of either cases caused the date string to be invalid. This allows you to immediately be notified of the issue and rectify it.
+   <br> Examples of erroneous times:
+  * Wrong time: `35:00` is a time that does not exist.
+  * Wrong format: `120:00` does not follow the expected format `HH:mm`.
