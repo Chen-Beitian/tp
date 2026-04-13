@@ -1088,8 +1088,8 @@ testers are expected to do more *exploratory* testing.
        Expected: The end date of the delivery is updated to 2026-06-30. A success message is shown in the result display.
 
 2. Rescheduling the delivery of a customer without one.
-    1. Prerequisites: David Li must be present in the customer list without a delivery (he has none in the default sample data). Run `find n/David Li` — he should appear at index 1 with no delivery information on his card.
-    2. Test case: `find n/David Li`, then `reschedule 1 ed/2026-06-30`<br>
+    1. Prerequisites: David Li must be present in the customer list without a delivery (he has none in the default sample data). Run `find n/David` — he should appear at index 1 with no delivery information on his card.
+    2. Test case: `find n/David`, then `reschedule 1 ed/2026-06-30`<br>
        Expected: An error message indicating that the customer does not have an existing delivery is shown.
     3. Other incorrect commands to try: `find n/Charlotte`, then `reschedule 1` (no fields provided)<br>
        Expected: An error message for the command format is shown.
